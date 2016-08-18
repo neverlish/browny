@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: one
+  spot: one
+  alpha: 1
+  bravo: 1
+  charlie: 1
+  delta: 1
+
+two:
+  post: two
+  spot: two
+  alpha: 1
+  bravo: 1
+  charlie: 1
+  delta: 1
