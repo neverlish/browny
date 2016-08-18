@@ -8,6 +8,9 @@
 </div>
 <hr>
 <%= @post.body %>
-<div class="text-right">
-<%= link_to 'Spot으로 가기', spot_path(@spot), class: 'btn btn-default' %>
-</div>
+<% if @post.user == current_user %>
+	<div class="text-right">
+		<%= link_to 'Go to spot', spot_path(@spot) %> | 
+		<%= link_to 'Edit', edit_spot_post_path(@spot, @post) %> | 
+		<%= link_to 'Delete', spot_post_path(@spot, @post), method: :delete %>
+<% end %>

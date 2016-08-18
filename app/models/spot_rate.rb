@@ -1,4 +1,4 @@
 class SpotRate < ApplicationRecord
-  belongs_to :post
-  belongs_to :spot
+	belongs_to :spot
+	belongs_to :post
 end

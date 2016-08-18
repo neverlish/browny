@@ -2,8 +2,8 @@
 
 one:
   user: one
-  post: one
+  spot: one
 
 two:
   user: two
-  post: two
+  spot: two

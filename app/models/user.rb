@@ -4,12 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
-  has_many :posts
-  has_many :opinions
-  has_many :post_reads
+  has_many :posts, dependent: :destroy
+  has_many :sayinygs, dependent: :destroy
+  has_many :spot_reads, dependent: :destroy
+  has_many :asks, dependent: :destroy
+  has_many :answers, dependent: :destroy
 
-  has_many :read_posts, through: :post_reads, source: :post
-  has_many :said_spots, through: :sayings, source: :spot
+  has_many :read_spots, through: :spot_reads, source: :spot
+  has_many :asked_spots, through: :asks, source: :spot
+  has_many :answered_spots, through: :answers, source: :spot
+
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email

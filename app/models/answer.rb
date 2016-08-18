@@ -1,7 +1,7 @@
-class Post < ApplicationRecord
+class Answer < ApplicationRecord
 	validates :body, presence: true
-
+	
   belongs_to :user
   belongs_to :spot
-  has_one :spot_rate
+  belongs_to :ask
 end

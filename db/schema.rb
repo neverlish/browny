@@ -10,15 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818031645) do
+ActiveRecord::Schema.define(version: 20160818105722) do
 
-  create_table "post_reads", force: :cascade do |t|
+  create_table "answers", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "post_id"
+    t.integer  "spot_id"
+    t.integer  "ask_id"
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_post_reads_on_post_id"
-    t.index ["user_id"], name: "index_post_reads_on_user_id"
+    t.index ["ask_id"], name: "index_answers_on_ask_id"
+    t.index ["spot_id"], name: "index_answers_on_spot_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "asks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "spot_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_asks_on_spot_id"
+    t.index ["user_id"], name: "index_asks_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -31,19 +44,9 @@ ActiveRecord::Schema.define(version: 20160818031645) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "sayings", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "spot_id"
-    t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["spot_id"], name: "index_sayings_on_spot_id"
-    t.index ["user_id"], name: "index_sayings_on_user_id"
-  end
-
   create_table "spot_rates", force: :cascade do |t|
-    t.integer  "post_id"
     t.integer  "spot_id"
+    t.integer  "post_id"
     t.integer  "alpha"
     t.integer  "bravo"
     t.integer  "charlie"
@@ -52,6 +55,15 @@ ActiveRecord::Schema.define(version: 20160818031645) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_spot_rates_on_post_id"
     t.index ["spot_id"], name: "index_spot_rates_on_spot_id"
+  end
+
+  create_table "spot_reads", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_spot_reads_on_spot_id"
+    t.index ["user_id"], name: "index_spot_reads_on_user_id"
   end
 
   create_table "spots", force: :cascade do |t|

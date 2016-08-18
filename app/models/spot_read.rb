@@ -1,4 +1,4 @@
-class Saying < ApplicationRecord
+class SpotRead < ApplicationRecord
   belongs_to :user
   belongs_to :spot
 end
