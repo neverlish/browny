@@ -1,2 +1,12 @@
-<h1>Spots#show</h1>
-<p>Find me in app/views/spots/show.html.erb</p>
+<h2>Name: <%= @spot.name %></h2>
+<h6>Category: <%= @spot.category %></h6>
+
+<%= link_to '관련 Post 작성', new_spot_post_path(@spot), class: 'btn btn-default' %>
+
+<hr>
+<% @spot.posts.all.order('created_at desc').each do |post| %>
+	<div class="well">
+		<strong><%= post.user.email %></strong><br>
+		<%= post.body %>
+	</div>
+<% end %>

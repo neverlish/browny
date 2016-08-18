@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :sayings
-  resources :posts
-  resources :spots
+  resources :spots do
+  	resources :posts
+  end
   devise_for :users
 
   root 'welcome#index'

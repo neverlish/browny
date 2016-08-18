@@ -1,0 +1,8 @@
+<%= simple_form_for([@spot, @spot.posts.build]) do |f| %>
+
+  <div class="form-group">
+    <%= f.input :body, input_html: { class: 'form-control' } %>
+  </div>
+  <%= f.button :submit, class: 'btn btn-default'%>
+
+<% end %>
