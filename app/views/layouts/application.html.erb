@@ -14,6 +14,7 @@
   	<% else %>
   		<%= link_to '회원가입', new_user_registration_path %>
   		<%= link_to '로그인', new_user_session_path %>
+      <%= link_to  "Facebook으로 로그인", user_facebook_omniauth_authorize_path %>
   	<% end %>
     <%= yield %>
   </body>
