@@ -1,12 +1,24 @@
-<h2>Name: <%= @spot.name %></h2>
+<h2><%= @spot.name %></h2>
 <h6>Category: <%= @spot.category %></h6>
-
-<%= link_to '관련 Post 작성', new_spot_post_path(@spot), class: 'btn btn-default' %>
+<div class="text-right">
+	<%= link_to 'Edit', edit_spot_path(@spot) %> | 
+	<%= link_to 'Delete', spot_path(@spot), method: :delete %>
+</div>
 
 <hr>
+<p>
+	<%= link_to '관련 Post 작성', new_spot_post_path(@spot), class: 'btn btn-default' %>
+	<%= link_to 'Spot 목록으로 돌아가기', spots_path, class: 'btn btn-default' %>
+</p>
 <% @spot.posts.all.order('created_at desc').each do |post| %>
 	<div class="well">
-		<strong><%= post.user.email %></strong><br>
+		<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
+		<strong><%= post.user.name %></strong><br>
 		<%= post.body %>
+		<div class="text-right">
+			<%= link_to 'Read detail', spot_post_path(@spot, post) %> | 
+			<%= link_to 'Edit', edit_spot_post_path(@spot, post) %> | 
+			<%= link_to 'Delete', spot_post_path(@spot, post), method: :delete %>
+		</div>
 	</div>
 <% end %>

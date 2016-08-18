@@ -21,6 +21,25 @@ class SpotsController < ApplicationController
   	@spot = Spot.find(params[:id])
   end
 
+  def edit
+    @spot = Spot.find(params[:id])
+  end
+
+  def update
+    @spot = Spot.find(params[:id])
+    if @spot.update(spot_params)
+      redirect_to @spot
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @spot = Spot.find(params[:id])
+    @spot.destroy
+    redirect_to spots_path
+  end
+
   private
   def spot_params
   	params.require(:spot).permit(:name, :category)

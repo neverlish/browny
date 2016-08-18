@@ -1,2 +1,13 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<%= link_to spot_path(@spot) do %>
+	<h2><%= @post.spot.name %></h2>
+<% end %>
+<h6><%= @post.spot.category %></h6>
+<div class="text-right">
+	<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
+	<%= @post.user.name %>
+</div>
+<hr>
+<%= @post.body %>
+<div class="text-right">
+<%= link_to 'Spot으로 가기', spot_path(@spot), class: 'btn btn-default' %>
+</div>
