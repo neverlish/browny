@@ -25,4 +25,6 @@
 <div class="text-right">
 	<%= link_to '관련 Post 작성', new_spot_post_path(@spot), class: 'btn btn-default' %>
 	<%= link_to 'Spot 목록으로 돌아가기', spots_path, class: 'btn btn-default' %>
+	<%= link_to '질문하기', new_spot_ask_path(@spot), class: 'btn btn-default' %>
+	<%= link_to '질문모아보기', spot_asks_path(@spot), class: 'btn btn-default' %>
 </div>
