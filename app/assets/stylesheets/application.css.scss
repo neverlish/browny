@@ -15,3 +15,58 @@
  */
 
 @import 'bootstrap';
+
+
+/* NAVBAR */
+.navbar-head {
+	height: 50px;
+	padding: 0 30px;
+	border-bottom: 1px solid gray;
+}
+
+.navbar-head-left {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.navbar-logo-image {
+	height: 40px;
+	width: 40px;
+	margin: 0 20px 0 0;
+	display: inline-block;
+}
+
+.navbar-head-logo {
+	display: inline-block;
+}
+
+.navbar-head-link  {
+	display: inline-block;
+	height: 50px;
+	width: 100px;
+	text-align: center;
+	padding: 14px 2% 20px 2%;
+	margin: 0 -2px;
+	
+}
+
+.navbar-head-link a {
+	color: #844447;
+	font-family: Arial;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.navbar-head-link:active {
+	background-color: #844447;
+}
+
+.navbar-head-link:active a {
+	color: white;
+}
+
+.navbar-head-right {
+	text-align: right;
+	padding-top: 15px;
+	font-size: 14px;
+}

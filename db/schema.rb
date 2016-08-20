@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820071528) do
+ActiveRecord::Schema.define(version: 20160818085815) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -64,8 +64,9 @@ ActiveRecord::Schema.define(version: 20160820071528) do
 
   create_table "spots", force: :cascade do |t|
     t.string   "name"
-    t.string   "category"
     t.integer  "place_id"
+    t.integer  "category",   null: false
+    t.integer  "status",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["place_id"], name: "index_spots_on_place_id"

@@ -1,5 +1,6 @@
 <h2><%= @spot.name %></h2>
-<h6>Category: <%= @spot.category %></h6>
+Category : <%= @spot.category %><br>
+Status : <%= @spot.status %><br>
 <div class="text-right">
 	<%= link_to 'Go to spots list', spots_path %> |
 	<%= link_to 'Edit', edit_spot_path(@spot) %> | 
