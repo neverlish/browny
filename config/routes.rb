@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :sayings
   resources :spots do
   	resources :posts, except: [:index]
+  	resources :asks
   end
   get '/posts' => 'posts#index'
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
 
