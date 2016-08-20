@@ -7,12 +7,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :sayinygs, dependent: :destroy
   has_many :spot_reads, dependent: :destroy
-  has_many :asks, dependent: :destroy
-  has_many :answers, dependent: :destroy
+  # has_many :asks, dependent: :destroy
+  # has_many :answers, dependent: :destroy
 
   has_many :read_spots, through: :spot_reads, source: :spot
-  has_many :asked_spots, through: :asks, source: :spot
-  has_many :answered_spots, through: :answers, source: :spot
+  # has_many :asked_spots, through: :asks, source: :spot
+  # has_many :answered_spots, through: :answers, source: :spot
 
 
   def self.from_omniauth(auth)

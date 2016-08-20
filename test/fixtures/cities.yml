@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  spot: one
-  body: MyText
+  name: MyString
+  latitude: 1
+  longitude: 1
 
 two:
-  user: two
-  spot: two
-  body: MyText
+  name: MyString
+  latitude: 1
+  longitude: 1

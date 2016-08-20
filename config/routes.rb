@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+	resources :cities
+	resources :places
   resources :spots do
   	resources :posts, except: [:index]
-  	resources :asks
   end
   get '/posts' => 'posts#index'
   

@@ -1,15 +1,4 @@
 <%= simple_form_for(@spot) do |f| %>
-  <% if @spot.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@spot.errors.count, "error") %> prohibited
-      this article from being saved:</h2>
-    <ul>
-    <% @spot.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-    <% end %>
-  </div>
   <div class="form-group">
     <%= f.input :name, input_html: { class: 'form-control' }, label: false, placeholder: 'Name' %>
   </div>

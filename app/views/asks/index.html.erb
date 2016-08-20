@@ -1,7 +1,0 @@
-<h4>Asks</h4>
-<% @asks.each do |ask| %>
-	<div class="well">
-		<strong>Spot: <%= link_to "#{ask.spot.name}", spot_path(ask.spot) %></strong><br>
-		Ask 내용 : <%= ask.body %>
-	</div>
-<% end %>

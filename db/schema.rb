@@ -10,28 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818105722) do
+ActiveRecord::Schema.define(version: 20160820071528) do
 
-  create_table "answers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "spot_id"
-    t.integer  "ask_id"
-    t.text     "body"
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "latitude"
+    t.integer  "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ask_id"], name: "index_answers_on_ask_id"
-    t.index ["spot_id"], name: "index_answers_on_spot_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
-  create_table "asks", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "spot_id"
-    t.text     "body"
+  create_table "places", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "latitude"
+    t.integer  "longitude"
+    t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["spot_id"], name: "index_asks_on_spot_id"
-    t.index ["user_id"], name: "index_asks_on_user_id"
+    t.index ["city_id"], name: "index_places_on_city_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -69,12 +65,17 @@ ActiveRecord::Schema.define(version: 20160818105722) do
   create_table "spots", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
+    t.integer  "place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_spots_on_place_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
+    t.string   "uid"
+    t.string   "image"
+    t.string   "provider"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -87,9 +88,6 @@ ActiveRecord::Schema.define(version: 20160818105722) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

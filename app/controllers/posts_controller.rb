@@ -1,47 +1,31 @@
 class PostsController < ApplicationController
+  before_action :set_spot, except: [:index]
+  before_action :set_post, only: [:show, :edit, :update, :delete]
   def index
     @posts = Post.all
   end
   
   def new
-    @spot = Spot.find(params[:spot_id])
     @post = @spot.posts.new
   end
 
-  def show
-    @spot = Spot.find(params[:spot_id])
-    @post = @spot.posts.find(params[:id])
-  end
-
   def create
-    @spot = Spot.find(params[:spot_id])
   	@post = @spot.posts.create(post_params)
   	@post.user = current_user
-  	if @post.save
-  		redirect_to @spot
-  	else
-  		render 'new'
-  	end
+    @post.save ? (redirect_to @spot) : (render 'new')
+  end
+
+  def show   
   end
 
   def edit
-    @spot = Spot.find(params[:spot_id])
-    @post = @spot.posts.find(params[:id])
   end
 
   def update
-    @spot = Spot.find(params[:spot_id])
-    @post = @spot.posts.find(params[:id])
-    if @post.update(post_params)
-      redirect_to @spot
-    else
-      render 'edit'
-    end
+    @post.update(post_params) ? (redirect_to @spot) : (render 'edit')
   end
 
   def destroy
-    @spot = Spot.find(params[:spot_id])
-    @post = @spot.posts.find(params[:id])
     @post.destroy
     redirect_to spot_path(@spot)
   end
@@ -49,5 +33,13 @@ class PostsController < ApplicationController
   private
   def post_params
   	params.require(:post).permit(:body, :user)
+  end
+
+  def set_spot
+    @spot = Spot.find(params[:spot_id])
+  end
+
+  def set_post
+    @post = @spot.posts.find(params[:id])
   end
 end
