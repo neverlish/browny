@@ -2,7 +2,17 @@
 위도 : <%= @city.latitude %><br>
 경도 : <%= @city.longitude %>
 <div class="text-right">
+	<%= link_to 'Go to cities', cities_path %> | 
 	<%= link_to 'Edit', edit_city_path(@city) %> | 
 	<%= link_to 'Delete', city_path(@city), method: :delete %>
 </div>
 <hr>
+<h4>Places in <%= @city.name %></h4>
+<% @city.places.each do |place| %>
+	<div class="well">
+		<strong><%= link_to "#{place.name}", place_path(place) %></strong><br>
+		위도 : <%= place.latitude %><br>
+		경도 : <%= place.longitude %>
+	</div>
+<% end %>
+<%= link_to "#{@city.name} place 작성", new_place_path, city_id: @city.id %>

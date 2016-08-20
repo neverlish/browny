@@ -16,6 +16,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @post = Post.new
     # if !SpotRead.find_by(user: current_user, spot_id: params[:id])
     #   if current_user.posts.count * 5 >= current_user.read_spots.count
     #     SpotRead.create(user: current_user, spot_id: params[:id])
@@ -39,7 +40,7 @@ class SpotsController < ApplicationController
 
   private
   def spot_params
-	  params.require(:spot).permit(:name, :category)
+	  params.require(:spot).permit(:name, :category, :place_id)
   end
 
   def set_spot
