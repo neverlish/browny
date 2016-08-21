@@ -4,4 +4,5 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :spot
   has_one :spot_rate
+  has_many :likes
 end
