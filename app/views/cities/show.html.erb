@@ -1,7 +1,8 @@
 <div class="container">
 	<h2><%= @city.name %></h2>
 	위도 : <%= @city.latitude %><br>
-	경도 : <%= @city.longitude %>
+	경도 : <%= @city.longitude %><br>
+	picture : <%=image_tag(@city.picture)%>
 	<div class="text-right">
 		<%= link_to 'Go to cities', cities_path %> | 
 		<%= link_to 'Edit', edit_city_path(@city) %> | 
