@@ -1,7 +1,9 @@
-<h4>Posts</h4>
-<% @posts.each do |post| %>
-	<div class="well">
-		<strong>Spot: <%= link_to "#{post.spot.name}", spot_path(post.spot) %></strong><br>
-		Post 내용 : <%= link_to "#{post.body}", spot_post_path(post.spot, post) %>
-	</div>
-<% end %>
+<div class="container">
+	<h4>Posts</h4>
+	<% @posts.each do |post| %>
+		<div class="well">
+			<strong>Spot: <%= link_to "#{post.spot.name}", spot_path(post.spot) %></strong><br>
+			Post 내용 : <%= link_to "#{post.body}", spot_post_path(post.spot, post) %>
+		</div>
+	<% end %>
+</div>

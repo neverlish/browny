@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-	enum status: {like: 0, my: 1}
+	enum status: {like: 0, my: 1}, _suffix: true
 	enum category: {do: 0, see: 1, eat: 2, sleep: 3}
 
 	validates :name, presence: true

@@ -4,22 +4,12 @@
     <%= link_to root_path do %>
       <%= image_tag "logo", class: "navbar-logo-image"%>
       <!-- <div class='navbar-head-link navbar-head-logo'>Browny</div> -->
-    <% end %>
-    <div class="navbar-head-link">
-      <%= link_to "Map", '#' %>
-    </div>
-    <div class="navbar-head-link">
-      <%= link_to "City", cities_path %>
-    </div>
-    <div class="navbar-head-link">
-      <%= link_to "Places", places_path %>
-    </div>
-    <div class="navbar-head-link">
-      <%= link_to "Spots", spots_path %>
-    </div>
-    <div class="navbar-head-link">
-      <%= link_to "Posts", posts_path %>
-    </div>
+    <% end %> 
+      <!-- <%= link_to "Map", '#', class: "navbar-head-link" %> -->
+      <%= link_to "City", cities_path, class: "navbar-head-link" %>
+      <%= link_to "Places", places_path, class: "navbar-head-link" %>
+      <%= link_to "Spots", spots_path, class: "navbar-head-link" %>
+      <%= link_to "Posts", posts_path, class: "navbar-head-link" %>
   </div>
   <div class="col-xs-12 col-md-4 col-lg-4 navbar-head-right">
   	<% if user_signed_in? %>
@@ -27,7 +17,9 @@
       <%= current_user.name %>
   		<%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
   	<% else %>
-      <%= link_to  "Facebook으로 로그인", user_facebook_omniauth_authorize_path %>
+      <%= link_to user_facebook_omniauth_authorize_path do %>
+        <%= image_tag "login_fb", size: "150x30", class: "navbar-login-fb" %>
+      <% end %>
   	<% end %>
   </div>
 </div>
