@@ -1,12 +1,14 @@
-<h4>Cities</h4>
-<% @cities.each do |city| %>
-	<div class="well">
-	<%= link_to city_path(city) do %>
-		<strong><%= city.name%></strong><br>
+<div class="container">
+	<h4>Cities</h4>
+	<% @cities.each do |city| %>
+		<div class="well">
+		<%= link_to city_path(city) do %>
+			<strong><%= city.name%></strong><br>
+		<% end %>
+		위도 : <%= city.latitude %>
+		경도 : <%= city.longitude %>
+		</div>
 	<% end %>
-	위도 : <%= city.latitude %>
-	경도 : <%= city.longitude %>
-	</div>
-<% end %>
 
-<%= link_to 'City 만들기', new_city_path, class: 'btn btn-default' %>
+	<%= link_to 'City 만들기', new_city_path, class: 'btn btn-default' %>
+</div>

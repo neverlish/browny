@@ -1,17 +1,19 @@
-<%= link_to spot_path(@spot) do %>
-	<h2><%= @post.spot.name %></h2>
-<% end %>
-<h6><%= @post.spot.category %></h6>
 
-<div class="text-right">
-	<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
-	<%= @post.user.name %>
-</div>
-<hr>
-<%= @post.body %>
-<% if @post.user == current_user %>
+<div class="container">
+	<%= link_to spot_path(@spot) do %>
+		<h2><%= @post.spot.name %></h2>
+	<% end %>
+	<h6><%= @post.spot.category %></h6>
 	<div class="text-right">
-		<%= link_to 'Go to spot', spot_path(@spot) %> | 
-		<%= link_to 'Edit', edit_spot_post_path(@spot, @post) %> | 
-		<%= link_to 'Delete', spot_post_path(@spot, @post), method: :delete %>
-<% end %>
+		<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
+		<%= @post.user.name %>
+	</div>
+	<hr>
+	<%= @post.body %>
+	<% if @post.user == current_user %>
+		<div class="text-right">
+			<%= link_to 'Go to spot', spot_path(@spot) %> | 
+			<%= link_to 'Edit', edit_spot_post_path(@spot, @post) %> | 
+			<%= link_to 'Delete', spot_post_path(@spot, @post), method: :delete %>
+	<% end %>
+</div>

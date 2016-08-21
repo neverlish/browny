@@ -22,6 +22,7 @@
 	height: 50px;
 	padding: 0 30px;
 	border-bottom: 1px solid gray;
+	display: block;
 }
 
 .navbar-head-left {
@@ -47,21 +48,15 @@
 	text-align: center;
 	padding: 14px 2% 20px 2%;
 	margin: 0 -2px;
-	
-}
-
-.navbar-head-link a {
 	color: #844447;
 	font-family: Arial;
 	font-size: 16px;
 	text-decoration: none;
 }
 
-.navbar-head-link:active {
+.navbar-head-link:hover, .navbar-head-link:active {
 	background-color: #844447;
-}
-
-.navbar-head-link:active a {
+	text-decoration: none;
 	color: white;
 }
 
@@ -69,4 +64,80 @@
 	text-align: right;
 	padding-top: 15px;
 	font-size: 14px;
+}
+
+.navbar-login-fb {
+	margin-top: -5px;
+}
+
+/* MAIN PAGE */
+
+.main-background {
+	height: 100vh;
+	background-image: url("/assets/main_background.jpg");
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+}
+
+.main-categories-all {
+	height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.main-categories-box {
+	height: 35%;
+	width: 60%;
+	background-color: rgba(255,255,255,0.5);
+	align-items: center;
+	display: flex;
+  justify-content: center;
+}
+
+.main-category {
+	height: 50px;
+	width: 150px;
+	border: 1px solid gray;
+	/*border-radius: 10%;*/
+	display: inline-block;
+	color: white;
+	font-size: 20px;
+	margin: 0 5px;
+	padding-top: 1.3%;
+}
+
+.main-category:hover, .main-category:active {
+	text-decoration: none;
+	color: black;
+	background-color: gray;
+}
+
+.main-do {
+	background-color: red;
+}
+
+.main-see {
+	background-color: red;
+}
+
+.main-eat {
+	background-color: red;
+}
+
+.main-sleep {
+	background-color: red;
+}
+
+
+
+/* LOGIN VIEW */
+.login-background {
+	background-image: url("/assets/main_background.jpg");
+	background-size: cover;
+	background-position: center center;
+}
+.login-fb {
+
 }

@@ -1,12 +1,14 @@
-<h4>Places</h4>
-<% @places.each do |place| %>
-	<div class="well">
-	<%= link_to place_path(place) do %>
-		<strong><%= place.name%></strong><br>
+<div class="container">
+	<h4>Places</h4>
+	<% @places.each do |place| %>
+		<div class="well">
+		<%= link_to place_path(place) do %>
+			<strong><%= place.name%></strong><br>
+		<% end %>
+		위도 : <%= place.latitude %>
+		경도 : <%= place.longitude %>
+		</div>
 	<% end %>
-	위도 : <%= place.latitude %>
-	경도 : <%= place.longitude %>
-	</div>
-<% end %>
 
-<%= link_to 'Place 만들기', new_place_path, class: 'btn btn-default' %>
+	<%= link_to 'Place 만들기', new_place_path, class: 'btn btn-default' %>
+</div>

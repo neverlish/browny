@@ -1,0 +1,35 @@
+<div class="col-md-2">
+	<div class="dropdown">
+	  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+	    Places
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	  	<% @places.each do |place| %>
+	  		<li><%= link_to "#{place.name}", place_spots_path(place) %></li>
+	    <% end %>
+	  </ul>
+	</div>
+</div>
+<div class="col-md-10">
+	<ul class="nav nav-tabs">
+		<li role="presentation">
+			<%= link_to "All", @place_id ?
+			"/places/#{@place_id}/spots" : "/spots" %>
+		</li>
+		<% @spot_categories.each do |category| %>
+			<% if category == params[:category] %>
+			<li role="presentation" class="active">
+			<% else %>
+			<li role="presentation">
+			<% end %>
+				
+					<%= link_to "#{category}", @place_id ? 
+					"/places/#{@place_id}/spots/category/#{category}" : "/spots/category/#{category}" %>
+				
+			
+				
+			</li>
+		<% end %>
+	</ul>
+</div>
