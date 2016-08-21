@@ -1,5 +1,10 @@
 <div class="container">
-	<h4>Spots</h4>
+  <%= render "category" %>
+  <br>
+  <br>
+
+
+	<h4><%= Place.find(@place_id).name if @place_id %> Spots</h4>
 	<% @spots.each do |spot| %>
 		<div class="well">
 		<%= link_to spot_path(spot) do %>

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 	resources :cities
-	resources :places
+	resources :places do
+    resources :spots 
+    get '/spots/category/:category' => 'spots#category'
+  end
   resources :spots do
   	resources :posts, except: [:index]
   	post "like", to: "likes#like_toggle"
   end
   get '/posts' => 'posts#index'
-  get '/posts/:category' => 'spots#category'
+  get '/spots/category/:category' => 'spots#category'
   
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
   root 'welcome#index'

@@ -1,0 +1,31 @@
+<h2><%= @spot.name %></h2>
+Category : <%= @spot.category %><br>
+Status : <%= @spot.status %><br>
+<%= @spot.likes.size%>명이 좋아합니다.<br>
+<% if current_user.is_like?(@spot) %>
+    <%= link_to "좋아요 취소", spot_like_path(@spot), method: "post" %>
+<% else %>
+    <%= link_to "좋아요", spot_like_path(@spot), method: "post" %>
+<% end %>
+<div class="text-right">
+	<%= link_to 'Go to spots list', spots_path %> |
+	<%= link_to 'Edit', edit_spot_path(@spot) %> | 
+	<%= link_to 'Delete', spot_path(@spot), method: :delete %>
+</div>
+
+<hr>
+
+<% @spot.posts.all.order('created_at desc').each do |post| %>
+	<div class="well">
+		<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
+		<strong><%= post.user.name %></strong><br>
+		<%= post.body %>
+		<% if post.user == current_user %>
+			<div class="text-right">
+				<%= link_to 'Read detail', spot_post_path(@spot, post) %> | 
+				<%= link_to 'Edit', edit_spot_post_path(@spot, post) %> | 
+				<%= link_to 'Delete', spot_post_path(@spot, post), method: :delete %>
+		<% end %>
+		</div>
+	</div>
+<% end %>

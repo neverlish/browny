@@ -1,13 +1,19 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_action :spot_select, only: [:index, :category]
 
   def category
-    @category_spots = Spot.where(category: params[:category])
+    if @place_id
+      @category_spots = Spot.where(place_id: @place_id, category: params[:category])
+    else
+      @category_spots = Spot.where(category: params[:category])
+    end
   end
   
   def index
-  	@spots = Spot.all
+    
+    @spots = @place_id ? Spot.where(place_id: @place_id) : Spot.all
   end
 
   def new
@@ -49,5 +55,11 @@ class SpotsController < ApplicationController
 
   def set_spot
     @spot = Spot.find(params[:id])
+  end
+
+  def spot_select
+    @place_id = params[:place_id]
+    @spot_categories = Spot.categories.keys
+    @places = Place.all
   end
 end
