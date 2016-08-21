@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # has_many :asked_spots, through: :asks, source: :spot
   # has_many :answered_spots, through: :answers, source: :spot
 
-
+  has_many :likes
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
@@ -30,4 +30,8 @@ class User < ApplicationRecord
       end
     end
   end
+  def is_like?(spot)
+    Like.find_by(user_id: self.id,spot_id: spot.id).present?
+  end
+  
 end

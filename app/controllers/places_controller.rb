@@ -11,7 +11,7 @@ class PlacesController < ApplicationController
   end
 
   def create
-  	@place = Place.new(place_params)
+  	 @place = Place.new(place_params)
     @place.save ? (redirect_to @place) : (render 'new')
   end
 
