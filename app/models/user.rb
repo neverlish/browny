@@ -30,8 +30,10 @@ class User < ApplicationRecord
       end
     end
   end
-  def is_like?(spot)
+  def is_spotlike?(spot)
     Like.find_by(user_id: self.id,spot_id: spot.id).present?
   end
-  
+  def is_postlike?(post)
+    Like.find_by(user_id: self.id,post_id: post.id).present?
+  end
 end

@@ -27,6 +27,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @spotlike = Like.where(spot_id: @spot.id,post_id: nil)
     @post = Post.new
     # if !SpotRead.find_by(user: current_user, spot_id: params[:id])
     #   if current_user.posts.count * 5 >= current_user.read_spots.count
