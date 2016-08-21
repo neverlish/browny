@@ -1,0 +1,34 @@
+<div class="navbar-head">
+<div class="row">
+  <div class="col-xs-12 col-md-8 col-lg-8 navbar-head-left" style="margin:0;">
+    <%= link_to root_path do %>
+      <%= image_tag "logo", class: "navbar-logo-image"%>
+      <!-- <div class='navbar-head-link navbar-head-logo'>Browny</div> -->
+    <% end %>
+    <div class="navbar-head-link">
+      <%= link_to "Map", '#' %>
+    </div>
+    <div class="navbar-head-link">
+      <%= link_to "City", cities_path %>
+    </div>
+    <div class="navbar-head-link">
+      <%= link_to "Places", places_path %>
+    </div>
+    <div class="navbar-head-link">
+      <%= link_to "Spots", spots_path %>
+    </div>
+    <div class="navbar-head-link">
+      <%= link_to "Posts", posts_path %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-4 col-lg-4 navbar-head-right">
+  	<% if user_signed_in? %>
+      <%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
+      <%= current_user.name %>
+  		<%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
+  	<% else %>
+      <%= link_to  "Facebook으로 로그인", user_facebook_omniauth_authorize_path %>
+  	<% end %>
+  </div>
+</div>
+</div>

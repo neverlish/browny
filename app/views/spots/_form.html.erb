@@ -6,8 +6,10 @@
     <%= f.collection_radio_buttons :place_id, Place.all, :id, :name %>
   </div>
   <div class="form-group">
-    <%= f.input :category, input_html: { class: 'form-control' }, label: false, placeholder: 'Category' %>
+    <%= f.collection_radio_buttons :category, Spot.categories, :first, :first %>
+  </div>
+  <div class="form-group">
+    <%= f.collection_radio_buttons :status, Spot.statuses, :first, :first %>
   </div>
   <%= f.button :submit, class: 'btn btn-default'%>
-
 <% end %>
