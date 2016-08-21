@@ -1,3 +1,19 @@
+<div class="column">
+<% @places.each do |place| %>
+  <div class="col-sm-4 col-md-3">
+    <div class="thumbnail">
+    	<%= link_to place_path(place) do %>
+      		<img src="..." alt="...">
+      			<div class="caption">
+        		<h3><%= place.name%></h3>
+				</div>
+		<% end %>
+    </div>
+  </div>
+<% end %>
+</div>
+
+
 <div class="container">
 	<%= render 'show' %>
 	<%= render 'posts/form' %>
