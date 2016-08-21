@@ -17,4 +17,4 @@
 	<% end %>
 	<%= link_to "#{@place.name} spot 작성", new_spot_path %>
 </div>
-<script src="//maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=cruise&key=AddYourOwnKeyHere"></script>
+<script src="//maps.googleapis.com/maps/api/place/nearbysearch/json?location=<%=@place.latitude%>,<%=@place.longitude%>&radius=500&types=food&name=cruise&key=AddYourOwnKeyHere"></script>

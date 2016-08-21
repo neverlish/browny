@@ -11,11 +11,12 @@ class PlacesController < ApplicationController
   end
 
   def create
-  	 @place = Place.new(place_params)
+  	@place = Place.new(place_params)
     @place.save ? (redirect_to @place) : (render 'new')
   end
 
   def show
+    @places = Place.all
   end
 
   def edit
@@ -32,10 +33,10 @@ class PlacesController < ApplicationController
 
   private
   def place_params
-  	params.require(:place).permit(:name, :latitude, :longitude, :city_id, :address)
+   	params.require(:place).permit(:name, :latitude, :longitude, :city_id, :address)
   end
 
   def set_place
-  	@place = Place.find(params[:id])
+    	@place = Place.find(params[:id])
   end
 end

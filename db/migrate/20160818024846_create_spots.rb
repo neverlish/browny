@@ -4,7 +4,6 @@ class CreateSpots < ActiveRecord::Migration[5.0]
       t.string :name
       t.references :place, foreign_key: true
       t.column :category, :integer, null: false
-      t.column :status, :integer, null: false
 
       t.timestamps
     end

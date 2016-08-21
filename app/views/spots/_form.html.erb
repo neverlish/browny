@@ -11,5 +11,9 @@
   <div class="form-group">
     <%= f.collection_radio_buttons :status, Spot.statuses, :first, :first %>
   </div>
+  <div class="form-group">
+    <%= f.file_field :picture %>
+    <%= f.hidden_field :picture_cache %>
+  </div>
   <%= f.button :submit, class: 'btn btn-default'%>
 <% end %>
