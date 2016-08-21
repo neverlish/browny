@@ -7,11 +7,7 @@
 	<h4><%= Place.find(@place_id).name if @place_id %> Spots</h4>
 	<% @spots.each do |spot| %>
 		<div class="well">
-		<%= link_to spot_path(spot) do %>
-			<strong><%= spot.name%></strong><br>
-		<% end %>
-		Category : <%= spot.category %><br>
-		Status : <%= spot.status %>
+			<%= render partial: "spots/show", locals: {spot: spot} %>
 		</div>
 	<% end %>
 

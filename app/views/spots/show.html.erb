@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="column">
 <% @places.each do |place| %>
   <div class="col-sm-4 col-md-3">
@@ -13,8 +14,10 @@
 <% end %>
 </div>
 
+=======
+>>>>>>> 29098f06445b31eb39b3940044585e0b5c6250c7
 
 <div class="container">
-	<%= render 'show' %>
+	<%= render partial: 'show', locals: {spot: @spot} %>
 	<%= render 'posts/form' %>
 </div>

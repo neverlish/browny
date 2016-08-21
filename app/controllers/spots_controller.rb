@@ -1,9 +1,10 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_action :set_spot, only: [:show, :edit, :update, :destroy, ]
   before_action :spot_select, only: [:index, :category]
 
   def category
+    @post = Post.new
     if @place_id
       @category_spots = Spot.where(place_id: @place_id, category: params[:category])
     else
@@ -26,6 +27,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @spotlike = Like.where(spot_id: @spot.id,post_id: nil)
     @post = Post.new
     # if !SpotRead.find_by(user: current_user, spot_id: params[:id])
     #   if current_user.posts.count * 5 >= current_user.read_spots.count
