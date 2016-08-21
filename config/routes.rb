@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   	resources :posts, except: [:index]
   end
   get '/posts' => 'posts#index'
+  get '/posts/:category' => 'spots#category'
   
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 

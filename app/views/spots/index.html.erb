@@ -1,12 +1,14 @@
-<h4>Spots</h4>
-<% @spots.each do |spot| %>
-	<div class="well">
-	<%= link_to spot_path(spot) do %>
-		<strong><%= spot.name%></strong><br>
+<div class="container">
+	<h4>Spots</h4>
+	<% @spots.each do |spot| %>
+		<div class="well">
+		<%= link_to spot_path(spot) do %>
+			<strong><%= spot.name%></strong><br>
+		<% end %>
+		Category : <%= spot.category %><br>
+		Status : <%= spot.status %>
+		</div>
 	<% end %>
-	Category : <%= spot.category %><br>
-	Status : <%= spot.status %>
-	</div>
-<% end %>
 
-<%= link_to 'Spot 만들기', new_spot_path, class: 'btn btn-default' %>
+	<%= link_to 'Spot 만들기', new_spot_path, class: 'btn btn-default' %>
+</div>
