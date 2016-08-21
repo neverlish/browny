@@ -15,6 +15,14 @@ class CitiesController < ApplicationController
   end
 
   def show
+    @places = @city.places.all
+    @list = Array.new
+    @places.each {|place| @list << place}
+    @list << @city
+    @hash = Gmaps4rails.build_markers(@list) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+    end
   end
 
   def edit
