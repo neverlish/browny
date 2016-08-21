@@ -1,4 +1,12 @@
-<div class="container">
-  <%= render partial: 'spot', locals: {spot: @spot} %>
-  <%= render 'posts/form' %>
+<div class="container" style="margin-bottom: 20px;">
+	<%= render "category" %>
+</div>
+<div class="row">
+	<div class="col-md-3 spot-list-left">
+		<%= render 'spots/spots' %>
+	</div>
+	<div class="col-md-8">
+	  <%= render partial: 'spot', locals: {spot: @spot} %>
+	  <%= render 'posts/form' %>
+	</div>
 </div>

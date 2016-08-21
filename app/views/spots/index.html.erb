@@ -3,13 +3,20 @@
   <br>
   <br>
 
-
 	<h4><%= Place.find(@place_id).name if @place_id %> Spots</h4>
-	<% @spots.each do |spot| %>
-		<div class="well">
-			<%= render partial: "spots/spot", locals: {spot: spot} %>
-		</div>
-	<% end %>
+	<div class="row">
+		<% @spots.each do |spot| %>
+      <div class="col-sm-4 col-md-3">
+        <%= link_to spot_path(spot) do %>
+          <div class="thumbnail thumbnail-image-box" style="background-image: url(<%= spot.picture.url %>);">
+      			<div class="caption">
+          		<h3><%= spot.name%></h3>
+    				</div>
+          </div>
+        <% end %>
+      </div>
+		<% end %>
+	</div>
 
 	<%= link_to 'Spot 만들기', new_spot_path, class: 'btn btn-default' %>
 </div>

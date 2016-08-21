@@ -147,3 +147,32 @@
 .login-fb {
 
 }
+
+/* CONTENT VIEW */
+
+.thumbnail-image-box {
+	min-height: 200px;  
+	background-size: cover; 
+	background-position: center center;
+}
+
+
+/* SPOT SHOW LEFT MENU */
+.spot-list-left {
+	min-height: 100vh;
+}
+
+.thumbnails-image-list {
+	padding: 30px;
+	display: flex;
+  justify-content: center;
+	text-align: center;
+	
+}
+.thumbnail-image-box-small {
+  height: 100px; 
+  width: 200px;
+  margin: -20px;
+  background-size: cover; 
+	background-position: center center;
+}
