@@ -1,9 +1,10 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_action :set_spot, only: [:show, :edit, :update, :destroy, ]
   before_action :spot_select, only: [:index, :category]
 
   def category
+    @post = Post.new
     if @place_id
       @category_spots = Spot.where(place_id: @place_id, category: params[:category])
     else

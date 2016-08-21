@@ -8,19 +8,7 @@
 	<br>
 	<% @category_spots.each do |spot| %>
 		<div class="well">
-			<%= link_to spot_path(spot) do %>
-				<strong><%= spot.name %></strong><br>
-			<% end %>
-			소속 place : <%= spot.place.name %><br>
-			소속 City : <%= spot.place.city.name %><br>
-			<hr>
-			관련 Posts<br>
-			<% spot.posts.each do |post| %>
-				<strong><%= post.user.name %></strong> | 
-				<%= link_to spot_post_path(spot, post) do %>
-					<%= post.body %>
-				<% end %>
-			<% end %>
+			<%= render partial: "spots/show", locals: {spot: spot} %>
 		</div>
 	<% end %>
 </div>
