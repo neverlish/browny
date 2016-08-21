@@ -52,7 +52,7 @@ class SpotsController < ApplicationController
 
   private
   def spot_params
-	  params.require(:spot).permit(:name, :place_id, :category)
+	  params.require(:spot).permit(:name, :place_id, :category, :picture)
   end
 
   def set_spot

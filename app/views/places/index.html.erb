@@ -28,14 +28,13 @@
   <div class="row">
     <% @places.each do |place| %>
       <div class="col-sm-4 col-md-3">
-        <div class="thumbnail">
-        	<%= link_to place_path(place) do %>
-          		<img src="..." alt="...">
-          			<div class="caption">
-            		<h3><%= place.name%></h3>
+        <%= link_to place_path(place) do %>
+          <div class="thumbnail" style="min-height: 200px; background-image: url(<%= place.picture.url %>); background-size: cover;">
+      			<div class="caption">
+          		<h3><%= place.name%></h3>
     				</div>
-    		  <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -2,7 +2,8 @@
 	<h2><%= @place.name %></h2>
 	소속 도시 : <%= @place.city.name %><br>
 	위도 : <%= @place.latitude %><br>
-	경도 : <%= @place.longitude %>
+	경도 : <%= @place.longitude %><br>
+	picture : <%=image_tag(@place.picture)%>
 	<div class="text-right">
 		<%= link_to 'Go to places', places_path %> | 
 		<%= link_to 'Edit', edit_place_path(@place) %> | 

@@ -7,7 +7,7 @@
 	<h4><%= Place.find(@place_id).name if @place_id %> Spots</h4>
 	<% @spots.each do |spot| %>
 		<div class="well">
-			<%= render partial: "spots/show", locals: {spot: spot} %>
+			<%= render partial: "spots/spot", locals: {spot: spot} %>
 		</div>
 	<% end %>
 

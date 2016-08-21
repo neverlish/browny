@@ -1,7 +1,7 @@
 <%= link_to spot_path(spot) do %>
 	<strong><%= spot.name%></strong><br>
 <% end %>
-Category : <%= spot.category %> | Status : <%= spot.status %><br>
+Category : <%= spot.category %><br>
 <%= spot.likes.size%>명이 좋아합니다.
 <% if current_user.is_postlike?(spot) %>
     <%= link_to "좋아요 취소", spot_like_path(spot), method: "post" %>
@@ -27,14 +27,6 @@ Category : <%= spot.category %> | Status : <%= spot.status %><br>
 		<% else %>
 		    <%= link_to "좋아요", spot_post_like_path(@spot, post), method: "post" %>
 		<% end %>
-
-		<% if post.user == current_user %>
-			<div class="text-right">
-				<%= link_to 'Read detail', spot_post_path(@spot, post) %> | 
-				<%= link_to 'Edit', edit_spot_post_path(@spot, post) %> | 
-				<%= link_to 'Delete', spot_post_path(@spot, post), method: :delete %>
-		<% end %>
-		</div>
 	</div>
 	<% if post.user == current_user %>
 		<div class="text-right">
