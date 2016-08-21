@@ -9,12 +9,6 @@
     <%= f.collection_radio_buttons :city_id, City.all, :id, :name, :prompt => true, id: "city" %>
   </div>
   <div class="form-group">
-    <%= f.number_field :latitude, input_html: { class: 'form-control' }, label: false, placeholder: '위도' %>
-  </div>
-  <div class="form-group">
-    <%= f.number_field :longitude, input_html: { class: 'form-control' }, label: false, placeholder: '경도' %>
-  </div>
-  <div class="form-group">
     <%= f.file_field :picture %>
     <%= f.hidden_field :picture_cache %>
   </div>

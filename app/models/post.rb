@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   belongs_to :spot
   has_one :spot_rate
   has_many :likes
+
+  mount_uploader :picture, PictureUploader
 end
