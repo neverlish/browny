@@ -1,15 +1,13 @@
 <div class="main-background">
-	
-		<div class="main-categories-all text-center">
-			<div class="main-categories-box">
-				<% @categories.each do |category| %>
-					<%= link_to "/posts/#{category}", class: "main-category main-#{category}" do %>
-						<span><%= category %></span>
-					<% end %>
+	<div class="main-categories-all text-center">
+		<div class="main-categories-box">
+			<% @categories.each do |category| %>
+				<%= link_to "/spots/#{category}", class: "main-category main-#{category}" do %>
+					<span><%= category %></span>
 				<% end %>
-			</div>
+			<% end %>
 		</div>
-	
+	</div>
 </div>
 
 
