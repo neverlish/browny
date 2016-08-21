@@ -13,7 +13,11 @@
 </div>
 <div class="col-md-10">
 	<ul class="nav nav-tabs">
+		<% if !params[:category] %>
+		<li role="presentation" class="active">
+		<% else %>
 		<li role="presentation">
+		<% end %>
 			<%= link_to "All", @place_id ?
 			"/places/#{@place_id}/spots" : "/spots" %>
 		</li>
@@ -23,12 +27,8 @@
 			<% else %>
 			<li role="presentation">
 			<% end %>
-				
 					<%= link_to "#{category}", @place_id ? 
-					"/places/#{@place_id}/spots/category/#{category}" : "/spots/category/#{category}" %>
-				
-			
-				
+					"/places/#{@place_id}/spots/category/#{category}" : "/spots/category/#{category}" %>	
 			</li>
 		<% end %>
 	</ul>

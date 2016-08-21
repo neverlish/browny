@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 20160821110109) do
     t.string   "name"
     t.integer  "place_id"
     t.integer  "category",   null: false
-    t.integer  "status",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "picture"

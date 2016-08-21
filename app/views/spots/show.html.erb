@@ -1,23 +1,4 @@
-<<<<<<< HEAD
-<div class="column">
-<% @places.each do |place| %>
-  <div class="col-sm-4 col-md-3">
-    <div class="thumbnail">
-    	<%= link_to place_path(place) do %>
-      		<img src="..." alt="...">
-      			<div class="caption">
-        		<h3><%= place.name%></h3>
-				</div>
-		<% end %>
-    </div>
-  </div>
-<% end %>
-</div>
-
-=======
->>>>>>> 29098f06445b31eb39b3940044585e0b5c6250c7
-
 <div class="container">
-	<%= render partial: 'show', locals: {spot: @spot} %>
-	<%= render 'posts/form' %>
+  <%= render partial: 'spot', locals: {spot: @spot} %>
+  <%= render 'posts/form' %>
 </div>

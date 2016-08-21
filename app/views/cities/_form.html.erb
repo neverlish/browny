@@ -5,15 +5,11 @@
    <div class="form-group">
     <%= f.input :address, input_html: { class: 'form-control' }, label: false, placeholder: '주소' %>
   </div>
-  <div class="form-group">
-    <%= f.number_field :latitude, input_html: { class: 'form-control' }, label: false, placeholder: '위도' %>
-  </div>
-  <div class="form-group">
-    <%= f.number_field :longitude, input_html: { class: 'form-control' }, label: false, placeholder: '경도' %>
-  </div>
+
   <div class="form-group">
     <%= f.file_field :picture %>
     <%= f.hidden_field :picture_cache %>
   </div>
+
   <%= f.button :submit, class: 'btn btn-default'%>
 <% end %>

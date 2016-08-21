@@ -27,7 +27,7 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spotlike = Like.where(spot_id: @spot.id,post_id: nil)
+    @spotlike = Like.where(spot_id: @spot.id, post_id: nil)
     @post = Post.new
     # if !SpotRead.find_by(user: current_user, spot_id: params[:id])
     #   if current_user.posts.count * 5 >= current_user.read_spots.count
@@ -52,7 +52,7 @@ class SpotsController < ApplicationController
 
   private
   def spot_params
-	  params.require(:spot).permit(:name, :place_id, :category, :status)
+	  params.require(:spot).permit(:name, :place_id, :category, :picture)
   end
 
   def set_spot

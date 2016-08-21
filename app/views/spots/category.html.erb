@@ -8,7 +8,7 @@
 	<br>
 	<% @category_spots.each do |spot| %>
 		<div class="well">
-			<%= render partial: "spots/show", locals: {spot: spot} %>
+			<%= render partial: "spots/spot", locals: {spot: spot} %>
 		</div>
 	<% end %>
 </div>
