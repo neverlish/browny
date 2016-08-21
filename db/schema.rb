@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821074629) do
+ActiveRecord::Schema.define(version: 20160821104246) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160821074629) do
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "picture"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -32,15 +33,6 @@ ActiveRecord::Schema.define(version: 20160821074629) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.string   "picture"
-    t.string   "imageable_type"
-    t.integer  "imageable_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
-  end
-
   create_table "places", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -49,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160821074629) do
     t.integer  "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "picture"
     t.index ["city_id"], name: "index_places_on_city_id"
   end
 
@@ -58,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160821074629) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "picture"
     t.index ["spot_id"], name: "index_posts_on_spot_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -91,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160821074629) do
     t.integer  "status",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "picture"
     t.index ["place_id"], name: "index_spots_on_place_id"
   end
 
