@@ -4,6 +4,6 @@ class Place < ApplicationRecord
 	validates :name, presence: true
 
 	belongs_to :city
-
+	mount_uploader :picture, PictureUploader
 	has_many :spots
 end
