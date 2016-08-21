@@ -7,6 +7,7 @@ class SpotsController < ApplicationController
   end
 
   def new
+  @place = Place.find(params[:place_id])
   	@spot = Spot.new
   end
 
