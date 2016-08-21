@@ -17,9 +17,14 @@
       <%= current_user.name %>
   		<%= link_to '로그아웃', destroy_user_session_path, method: :delete %>
   	<% else %>
+    
+    
       <%= link_to user_facebook_omniauth_authorize_path do %>
         <%= image_tag "login_fb", size: "150x30", class: "navbar-login-fb" %>
       <% end %>
+   
+  </div>
+      
   	<% end %>
   </div>
 </div>
