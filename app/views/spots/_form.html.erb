@@ -14,9 +14,6 @@
     </div>
   <% end %>
   <div class="form-group">
-    <%= f.collection_radio_buttons :place_id, Place.all, :id, :name %>
-  </div>
-  <div class="form-group">
     <%= f.collection_radio_buttons :category, Spot.categories, :first, :first %>
   </div>
   <div class="form-group">

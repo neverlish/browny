@@ -1,7 +1,7 @@
 <%= link_to spot_path(spot) do %>
 	<strong><%= spot.name%></strong><br>
 <% end %>
-작성자 : <%= spot.user %>
+작성자 : <%= spot.user.name %> | 
 Category : <%= spot.category %><br>
 <%= spot.likes.size%>명이 좋아합니다.
 <% if current_user.is_spotlike?(spot) %>
