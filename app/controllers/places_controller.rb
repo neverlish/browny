@@ -12,12 +12,16 @@ class PlacesController < ApplicationController
   end
 
   def create
-  	@place = Place.new(place_params)
+   	@place = Place.new(place_params)
     @place.save ? (redirect_to @place) : (render 'new')
   end
 
   def show
-    @places = Place.all
+    @spots = @place.spots.all
+    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+    marker.lat spot.latitude
+    marker.lng spot.longitude
+    end
   end
 
   def edit

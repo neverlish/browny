@@ -6,7 +6,7 @@ class CreatePlaces < ActiveRecord::Migration[5.0]
       t.float :latitude
       t.float :longitude
       t.references :city
-
+      t.string :picture
       t.timestamps
     end
   end
