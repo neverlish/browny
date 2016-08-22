@@ -5,6 +5,7 @@
 	    <span class="caret"></span>
 	  </button>
 	  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+	  	<li><%= link_to 'All', spots_path %></li>
 	  	<% @places.each do |place| %>
 	  		<li><%= link_to "#{place.name}", place_spots_path(place) %></li>
 	    <% end %>

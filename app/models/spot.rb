@@ -4,7 +4,9 @@ class Spot < ApplicationRecord
 	validates :name, presence: true
 	validates :category, presence: true
 
+	belongs_to :user
 	belongs_to :place
+
 
 	has_many :posts, dependent: :destroy
 	has_many :spot_reads, dependent: :destroy

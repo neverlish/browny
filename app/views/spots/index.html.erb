@@ -3,7 +3,11 @@
   <br>
   <br>
 
-	<h4><%= Place.find(@place_id).name if @place_id %> Spots</h4>
+	<h4>
+    <%= link_to place_path(@place_id) do %>
+      <%= Place.find(@place_id).name if @place_id %> 
+    <% end %>
+  Spots</h4>
 	<div class="row">
 		<% @spots.each do |spot| %>
       <div class="col-sm-4 col-md-3">
@@ -17,6 +21,9 @@
       </div>
 		<% end %>
 	</div>
-
+  <% if @place_id %>
+    <%= link_to 'Spot 만들기', new_place_spot_path(@place_id), class: 'btn btn-default' %>
+  <% else %>
 	<%= link_to 'Spot 만들기', new_spot_path, class: 'btn btn-default' %>
+  <% end %>
 </div>
