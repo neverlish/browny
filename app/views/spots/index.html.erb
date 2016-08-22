@@ -3,10 +3,8 @@
   <br>
   <br>
 
-	<h4>
-    <%= link_to place_path(@place_id) do %>
-      <%= Place.find(@place_id).name if @place_id %> 
-    <% end %>
+	<h4>  
+    <%= link_to "#{Place.find(@place_id).name}", place_path(@place_id) if @place_id %>
   Spots</h4>
 	<div class="row">
 		<% @spots.each do |spot| %>
