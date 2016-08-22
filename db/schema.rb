@@ -10,24 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821104246) do
+ActiveRecord::Schema.define(version: 20160821050620) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
+    t.string   "picture"
     t.float    "latitude"
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "picture"
   end
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "spot_id"
+    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "post_id"
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["spot_id"], name: "index_likes_on_spot_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20160821104246) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "city_id"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "picture"
     t.index ["city_id"], name: "index_places_on_city_id"
   end
 
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20160821104246) do
     t.integer  "user_id"
     t.integer  "spot_id"
     t.text     "body"
+    t.string   "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "picture"
     t.index ["spot_id"], name: "index_posts_on_spot_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -82,9 +82,12 @@ ActiveRecord::Schema.define(version: 20160821104246) do
     t.string   "name"
     t.integer  "place_id"
     t.integer  "category",   null: false
+    t.string   "picture"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "picture"
     t.index ["place_id"], name: "index_spots_on_place_id"
   end
 

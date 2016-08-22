@@ -15,4 +15,7 @@ class Spot < ApplicationRecord
 	has_many :likes
 
 	mount_uploader :picture, PictureUploader
+
+	geocoded_by :address
+	after_validation :geocode
 end

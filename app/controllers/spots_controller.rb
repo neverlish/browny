@@ -22,7 +22,7 @@ class SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    @spot.save ? (redirect_to spots_path) : (render 'new')
+  @spot.save ? (redirect_to @spot) : (render 'new')
   end
 
   def show
@@ -61,7 +61,7 @@ class SpotsController < ApplicationController
 
   private
   def spot_params
-	  params.require(:spot).permit(:name, :place_id, :category, :picture)
+	  params.require(:spot).permit(:name, :place_id, :category, :picture,:latitude, :longitude,:address)
   end
 
   def set_spot
