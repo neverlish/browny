@@ -3,7 +3,7 @@
 <% end %>
 Category : <%= spot.category %><br>
 <%= spot.likes.size%>명이 좋아합니다.
-<% if current_user.is_postlike?(spot) %>
+<% if current_user.is_spotlike?(spot) %>
     <%= link_to "좋아요 취소", spot_like_path(spot), method: "post" %>
 <% else %>
     <%= link_to "좋아요", spot_like_path(spot), method: "post" %>

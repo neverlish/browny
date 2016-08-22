@@ -17,7 +17,10 @@ class PlacesController < ApplicationController
 
   def show
     @spots = @place.spots.all
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+    @list = Array.new
+    @spots.each {|spot| @list << spot}
+    @list << @place
+    @hash = Gmaps4rails.build_markers(@list) do |spot, marker|
     marker.lat spot.latitude
     marker.lng spot.longitude
     end
