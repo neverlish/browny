@@ -16,7 +16,7 @@
 			<strong><%= link_to "#{spot.name}", spot_path(spot) %></strong><br>
 		</div>
 	<% end %>
-	<%= link_to "#{@place.name} spot 작성", new_spot_path %>
+	<%= link_to "#{@place.name} spot 작성", new_place_spot_path(@place) %>
 
 	<script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyAPFLuE2iKv8B3egGibg3z9q8jQosNxD0w"></script>
 	<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>

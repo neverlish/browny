@@ -1,7 +1,7 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
-  before_action :spot_select, only: [:index, :category, :show]
+  before_action :place_select, only: [:index, :category, :show, :new, :create]
 
   def category
     @post = Post.new
@@ -61,14 +61,14 @@ class SpotsController < ApplicationController
 
   private
   def spot_params
-	  params.require(:spot).permit(:name, :place_id, :category, :picture)
+	  params.require(:spot).permit(:name, :place_id, :category, :picture, :picture_cache)
   end
 
   def set_spot
     @spot = Spot.find(params[:id])
   end
 
-  def spot_select
+  def place_select
     @place_id = params[:place_id]
     @spot_categories = Spot.categories.keys
     @places = Place.all
