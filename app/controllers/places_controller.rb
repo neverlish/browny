@@ -1,6 +1,7 @@
 class PlacesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :city_select, only: [:new, :create]
 
   def index
   	@places = Place.all
@@ -40,10 +41,14 @@ class PlacesController < ApplicationController
 
   private
   def place_params
-   	params.require(:place).permit(:name, :latitude, :longitude, :city_id, :address, :picture)
+   	params.require(:place).permit(:name, :latitude, :longitude, :city_id, :address, :picture, :picture_cache)
   end
 
   def set_place
-    	@place = Place.find(params[:id])
+    @place = Place.find(params[:id])
+  end
+
+  def city_select
+    @city_id = params[:city_id]
   end
 end

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-	resources :cities
+	resources :cities do
+    resources :places
+  end
 	resources :places do
     resources :spots 
     get '/spots/category/:category' => 'spots#category'

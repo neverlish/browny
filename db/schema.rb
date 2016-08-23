@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160821050620) do
 
   create_table "spots", force: :cascade do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.integer  "place_id"
     t.integer  "category",   null: false
     t.string   "picture"
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160821050620) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["place_id"], name: "index_spots_on_place_id"
+    t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

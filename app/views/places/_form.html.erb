@@ -2,12 +2,17 @@
   <div class="form-group">
     <%= f.input :name, input_html: { class: 'form-control' }, label: false, placeholder: '장소 이름' %>
   </div>
-    <div class="form-group">
+  <div class="form-group">
     <%= f.input :address, input_html: { class: 'form-control' }, label: false, placeholder: '주소' %>
   </div>
-  <div class="form-group">
-    <%= f.collection_radio_buttons :city_id, City.all, :id, :name, :prompt => true, id: "city" %>
-  </div>
+  <% if @city_id %>
+    <p>City : <strong><%= City.find(@city_id).name %></strong></p>
+    <%= f.hidden_field :city_id, value: "#{@city_id}" %>
+  <% else %>
+    <div class="form-group">
+      <%= f.collection_radio_buttons :city_id, City.all, :id, :name %>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.file_field :picture %>
     <%= f.hidden_field :picture_cache %>

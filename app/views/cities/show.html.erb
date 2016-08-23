@@ -16,7 +16,9 @@
 
 		</div>
 	<% end %>
-	<%= link_to "#{@city.name} place 작성", new_place_path, id: "city" %>
+	<%= link_to "#{@city.name} place 작성", new_city_place_path(@city) %>
+
+	<hr>
 
 	<script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyAPFLuE2iKv8B3egGibg3z9q8jQosNxD0w"></script>
 	<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>

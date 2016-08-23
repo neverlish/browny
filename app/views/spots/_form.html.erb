@@ -5,9 +5,14 @@
   <div class="form-group">
     <%= f.input :address, input_html: { class: 'form-control' }, label: false, placeholder: '주소' %>
   </div>
-  <div class="form-group">
-    <%= f.collection_radio_buttons :place_id, Place.all, :id, :name %>
-  </div>
+  <% if @place_id %>
+    <p>Place : <strong><%= Place.find(@place_id).name %></strong></p>
+    <%= f.hidden_field :place_id, value: "#{@place_id}" %>
+  <% else %>
+    <div class="form-group">
+      <%= f.collection_radio_buttons :place_id, Place.all, :id, :name %>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.collection_radio_buttons :category, Spot.categories, :first, :first %>
   </div>

@@ -5,7 +5,7 @@
   <div class="row">
     <% @places.each do |place| %>
       <div class="col-sm-4 col-md-3">
-        <%= link_to place_path(place) do %>
+        <%= link_to place_spots_path(place) do %>
           <div class="thumbnail thumbnail-image-box" style="background-image: url(<%= place.picture.url %>);">
       			<div class="caption">
           		<h3 style="text-align:center; font-size: 30px;"><%= place.name%></h3>
