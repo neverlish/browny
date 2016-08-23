@@ -4,7 +4,12 @@ class PlacesController < ApplicationController
   before_action :city_select, only: [:new, :create]
 
   def index
-  	@places = Place.all
+    @places = Place.all
+    @hash = Gmaps4rails.build_markers(@places) do |place, marker|
+    marker.lat place.latitude
+    marker.lng place.longitude
+    end
+    
   end
 
   def new
