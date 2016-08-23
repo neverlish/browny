@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   get '/spots/category/:category' => 'spots#category'
   get '/welcome/index'
   
-  root 'welcome#main'
+  root 'posts#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
