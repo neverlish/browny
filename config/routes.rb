@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 	resources :cities do
     resources :places
   end
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/posts' => 'posts#index'
   get '/spots/category/:category' => 'spots#category'
   get '/welcome/index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
-  root 'places#index'
+  
+  root 'welcome#main'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
