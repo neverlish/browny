@@ -28,4 +28,4 @@ config.allowedContent = true;
   config.toolbar = "simple";
   // ... rest of the original config.js  ...
 }
-CKEDITOR.config.height = '400px';
+CKEDITOR.config.height = '200px';

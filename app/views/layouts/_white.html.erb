@@ -4,20 +4,16 @@
 		<div class="col-lg-3 col-md-3 col-sm-2 col-xs-0"></div>
 		<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-				<%= image_tag "search", size: "20x20" %>
+				<%= link_to image_tag("search", size: "20x20"), root_path %>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-				<%= link_to cities_path do %>
-					<%= image_tag "cities", size: "20x20" %>
-				<% end %>	
+				<%= link_to image_tag("cities", size: "20x20"), cities_path %>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-				<%= link_to map_path do %>
-					<%= image_tag "map", size: "20x20" %>
-				<% end %>
+				<%= link_to image_tag("map", size: "20x20"), map_path %>
 			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-0">
-				<%= image_tag "heart", size: "20x20" %>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<%= link_to image_tag("heart", size: "20x20"), root_path %>
 			</div>
 		</div>
 		<div class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>
