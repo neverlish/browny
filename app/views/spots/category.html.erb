@@ -1,7 +1,13 @@
-<%= render "category" %>
-<br>
-<br>
-<h4><%= Place.find(@place_id).name if @place_id %></h4>
+<h4>
+  Spots in
+  <% if @place_id %>
+    <%= link_to "#{Place.find(@place_id).name}", place_path(@place_id) if @place_id %>
+  <% else %>
+    All places
+  <% end %>
+  | <%= params[:category] %>
+</h4>
+
 <div class="row">
 	<% @category_spots.each do |spot| %>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
