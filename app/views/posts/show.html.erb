@@ -1,16 +1,18 @@
-<%= link_to spot_path(@spot) do %>
-	<h2><%= @post.spot.name %></h2>
-<% end %>
-<h6><%= @post.spot.category %></h6>
+<h1>제목 : <%=@post.title%></h1>
+<%= @post.spot.category %>
+<div class="text-right">
+	<%= link_to spot_path(@spot) do %>
+		<h4>SPOT : <%= @post.spot.name %></h4>
+	<% end %>
+</div>
 <div class="text-right">
 	<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
 	<%= @post.user.name %>
 </div>
 <hr>
-<%= @post.body %>
+<%= @post.body.html_safe %>
 <% if @post.user == current_user %>
 	<div class="text-right">
-		<%= link_to 'Go to spot', spot_path(@spot) %> | 
 		<%= link_to 'Edit', edit_spot_post_path(@spot, @post) %> | 
 		<%= link_to 'Delete', spot_post_path(@spot, @post), method: :delete %>
 	</div>
