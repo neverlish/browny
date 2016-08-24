@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  before_action :set_spot, only: [:show, :edit, :update, :destroy, :map]
   before_action :place_select, only: [:index, :category, :show, :new, :create]
   before_action :place_spots, only: [:show, :all_map]
 
@@ -48,6 +48,17 @@ class SpotsController < ApplicationController
     # end
   end
 
+  def map
+    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
+    marker.lat spot.latitude
+    marker.lng spot.longitude
+    marker.title   "i'm the title"
+    marker.infowindow render_to_string(
+      :partial => "/spots/info", 
+      :locals => {spot: spot})
+    end
+  end
+
   def all_map
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
     marker.lat spot.latitude
@@ -77,7 +88,11 @@ class SpotsController < ApplicationController
   end
 
   def set_spot
-    @spot = Spot.find(params[:id])
+    if params[:spot_id]
+      @spot = Spot.find(params[:spot_id])
+    else params[:id]
+      @spot = Spot.find(params[:id])
+    end
   end
 
   def place_select

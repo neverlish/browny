@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post "like", to: "likes#like_post_toggle"
     end
     post "like", to: "likes#like_spot_toggle"
+    get 'map' => 'spots#map'
   end
 
   resources :posts
