@@ -24,7 +24,9 @@
 	
 }
 
-/* NAVBAR */
+
+
+/* OLD NAVBAR */
 .navbar-head {
 	height: 50px;
 	padding: 0 30px;
@@ -75,6 +77,72 @@
 
 .navbar-login-fb {
 	margin-top: -5px;
+}
+
+
+
+
+
+/* WHITE NAVBAR */
+
+.white-navbar {
+	 height: 65px; 
+	 width: 100%; 
+	 border-bottom: 1px solid black; 
+	 padding-top: 7px; 
+	 position:fixed; 
+	 background-color: white; 
+	 z-index: 1;
+}
+
+.navbar-link-icon {
+	width: 19%; 
+	display:inline-block;
+	height: 100%;
+}
+
+.navbar-link-box {
+	width: 20%; 
+	display:inline-block;
+	height: 100%;
+	height: 28px;
+	text-decoration: none;
+	color: black;
+	padding-top: 2px;
+	margin: 0 -2px;
+}
+
+.navbar-link-box:hover {
+	background-color: black;
+	color: white;
+	text-decoration: none;
+}
+
+.navbar-link-box:active {
+	background-color: black;
+	color: white;
+	text-decoration: none;
+}
+
+
+.navbar-link-box-all {
+	background-color: #9babff;
+}
+
+.navbar-link-box-do {
+	background-color: #54ff9f;
+}
+
+.navbar-link-box-see {
+	background-color: #ff6768;
+}
+
+.navbar-link-box-eat {
+	background-color: #ffa700;
+}
+
+.navbar-link-box-sleep {
+	background-color: #603366;
 }
 
 /* MAIN PAGE */

@@ -14,10 +14,11 @@ Rails.application.routes.draw do
     end
     post "like", to: "likes#like_spot_toggle"
   end
-  get '/posts' => 'posts#index'
+
+  resources :posts
   get '/spots/category/:category' => 'spots#category'
   get '/welcome/index'
-  get '/map' => 'spots#map'
+  get '/map' => 'spots#all_map'
 
   root 'welcome#main'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
