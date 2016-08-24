@@ -26,9 +26,13 @@ class PlacesController < ApplicationController
     @list = Array.new
     @spots.each {|spot| @list << spot}
     @list << @place
-    @hash = Gmaps4rails.build_markers(@list) do |spot, marker|
+    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
     marker.lat spot.latitude
     marker.lng spot.longitude
+    marker.title   "i'm the title"
+    marker.infowindow render_to_string(
+      :partial => "/spots/info", 
+      :locals => {spot: spot})
     end
   end
 

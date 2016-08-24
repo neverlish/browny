@@ -8,6 +8,11 @@
 	작성자 : <%= spot.user.name %> | 
 	Category : <%= spot.category %><br>
 </div>
+<div style='width: 100%;'>
+  <div id="map" style='width: 100%; height: 300px;'></div>
+</div>
+작성자 : <%= spot.user.name %> | 
+Category : <%= spot.category %><br>
 <%= spot.likes.size%>명이 좋아합니다.
 <% if current_user.is_spotlike?(spot) %>
     <%= link_to "좋아요 취소", spot_like_path(spot), method: "post" %>
