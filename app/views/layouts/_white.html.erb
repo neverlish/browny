@@ -1,6 +1,6 @@
 
-<nav class="text-center" style="height: 70px; width: 100%; border-bottom: 1px solid black; padding-top: 7px; position:fixed; background-color: white; z-index: 1">
-	<div class="row">
+<nav class="white-navbar text-center">
+<!-- 	<div class="row">
 		<div class="col-lg-3 col-md-3 col-sm-2 col-xs-0"></div>
 		<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -17,22 +17,35 @@
 			</div>
 		</div>
 		<div class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>
+	</div> -->
+	<div class="row">
+		<div class="navbar-link-icon">
+			<%= link_to image_tag("home", size: "20x20"), root_path %>
+		</div>
+		<div class="navbar-link-icon">
+			<%= link_to image_tag("cities", size: "20x20"), cities_path %>
+		</div>
+		<div class="navbar-link-icon">
+			<%= link_to image_tag("search", size: "20x20"), root_path %>
+		</div>
+		<div class="navbar-link-icon">
+			<%= link_to image_tag("map", size: "20x20"), map_path %>
+		</div>
+		<div class="navbar-link-icon">
+			<%= link_to image_tag("heart", size: "20x20"), root_path %>
+		</div>
 	</div>
-	<div class="row text-center" style="margin-top: 15px;">
-		<div class="col-lg-3 col-md-3 col-sm-2 col-xs-0"></div>
-		<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">	
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-				<%= link_to 'All', spots_path %>
-			</div>
-			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-				<% @spot_categories = Spot.categories.keys %>
-				<% @spot_categories.each do |category| %>
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-						<%= link_to "#{category}", "/spots/category/#{category}" %>
-					</div>
-				<% end %>
-			</div>
+	<hr style="margin:7px 0 0;">
+	<div class="row">
+		<div class="text-center">
+			<%= link_to 'All', spots_path, class: "navbar-link-box navbar-link-box-all" %>
 			
-		<div class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>
+			<!-- <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"> -->
+			
+			<% @spot_categories = Spot.categories.keys %>
+			<% @spot_categories.each do |category| %>
+				<%= link_to "#{category}", "/spots/category/#{category}", class: "navbar-link-box navbar-link-box-#{category}" %>
+			<% end %>
+		</div>
 	</div>
 </nav>
