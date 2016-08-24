@@ -1,5 +1,6 @@
+Place : <%= link_to spot.place.name, place_path(spot.place) %><br>
 <%= link_to spot_path(spot) do %>
-	<strong><%= spot.name%></strong><br>
+	<h4><%= spot.name%></h4>
 <% end %>
 작성자 : <%= spot.user.name %> | 
 Category : <%= spot.category %><br>
@@ -11,6 +12,7 @@ Category : <%= spot.category %><br>
 <% end %>
 
 <div class="text-right">
+	<%= link_to 'Go to spots list', spots_path %> | 
 	<%= link_to 'Edit', edit_spot_path(spot) %> | 
 	<%= link_to 'Delete', spot_path(spot), method: :delete %>
 </div>
