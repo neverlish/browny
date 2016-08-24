@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     end
     post "like", to: "likes#like_spot_toggle"
   end
-  get '/posts' => 'posts#index'
+
+  resources :posts
   get '/spots/category/:category' => 'spots#category'
   get '/welcome/index'
   get '/map' => 'spots#map'

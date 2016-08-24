@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
   
   def new
-    @post = @spot.posts.new
+    @post = @spot ? @spot.posts.new : Post.new
   end
 
   def create
@@ -37,10 +37,10 @@ class PostsController < ApplicationController
   end
 
   def set_spot
-    @spot = Spot.find(params[:spot_id])
+    @spot = Spot.find(params[:spot_id]) if params[:spot_id]
   end
 
   def set_post
-    @post = @spot.posts.find(params[:id])
+    @post = params[:spot_id] ? @spot.posts.find(params[:id]) : Post.find(params[:id])
   end
 end
