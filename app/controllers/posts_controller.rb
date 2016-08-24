@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   def create
   	@post = @spot.posts.create(post_params)
   	@post.user = current_user
-    @post.save ? (redirect_to @spot) : (render 'new')
+  @post.save ? (redirect_to @spot) : (render 'new')
   end
 
   def show   
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-  	params.require(:post).permit(:body, :user)
+  	params.require(:post).permit(:body, :user,:picture, :title)
   end
 
   def set_spot
