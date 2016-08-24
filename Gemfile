@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'carrierwave'
+gem 'ckeditor'
+gem 'mini_magick'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
