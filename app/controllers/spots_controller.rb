@@ -2,6 +2,7 @@ class SpotsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
   before_action :place_select, only: [:index, :category, :show, :new, :create]
+  before_action :place_spots, only: [:show, :map]
 
   def category
     @post = Post.new
@@ -29,14 +30,13 @@ class SpotsController < ApplicationController
   def show
     @spotlike = Like.where(spot_id: @spot.id, post_id: nil)
     @post = Post.new
-    if @place_id
-      if params[:category]
-        @spots = Spot.where(place_id: @place_id, category: params[:category])
-      else
-        @spots = Spot.where(place_id: @place_id)
-      end
-    else
-      @spots = Spot.all
+    @hash = Gmaps4rails.build_markers(@spot) do |spot, marker|
+    marker.lat spot.latitude
+    marker.lng spot.longitude
+    marker.title   "i'm the title"
+    marker.infowindow render_to_string(
+      :partial => "/spots/info", 
+      :locals => {spot: spot})
     end
 
     # if !SpotRead.find_by(user: current_user, spot_id: params[:id])
@@ -46,6 +46,17 @@ class SpotsController < ApplicationController
     #     redirect_to spots_path
     #   end
     # end
+  end
+
+  def map
+    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+    marker.lat spot.latitude
+    marker.lng spot.longitude
+    marker.title   "i'm the title"
+    marker.infowindow render_to_string(
+      :partial => "/spots/info", 
+      :locals => {spot: spot})
+    end
   end
 
   def edit
@@ -73,5 +84,17 @@ class SpotsController < ApplicationController
     @place_id = params[:place_id]
     @spot_categories = Spot.categories.keys
     @places = Place.all
+  end
+
+  def place_spots
+    if @place_id
+      if params[:category]
+        @spots = Spot.where(place_id: @place_id, category: params[:category])
+      else
+        @spots = Spot.where(place_id: @place_id)
+      end
+    else
+      @spots = Spot.all
+    end
   end
 end

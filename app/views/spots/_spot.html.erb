@@ -1,6 +1,10 @@
+Place : <%= link_to spot.place.name, place_path(spot.place) %><br>
 <%= link_to spot_path(spot) do %>
-	<strong><%= spot.name%></strong><br>
+	<h4><%= spot.name%></h4>
 <% end %>
+<div style='width: 100%;'>
+  <div id="map" style='width: 100%; height: 300px;'></div>
+</div>
 작성자 : <%= spot.user.name %> | 
 Category : <%= spot.category %><br>
 <%= spot.likes.size%>명이 좋아합니다.
@@ -11,6 +15,7 @@ Category : <%= spot.category %><br>
 <% end %>
 
 <div class="text-right">
+	<%= link_to 'Go to spots list', spots_path %> | 
 	<%= link_to 'Edit', edit_spot_path(spot) %> | 
 	<%= link_to 'Delete', spot_path(spot), method: :delete %>
 </div>
