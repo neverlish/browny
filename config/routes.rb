@@ -19,12 +19,12 @@ Rails.application.routes.draw do
 
   get '/mypage' => 'mypage#my'
   get '/user/:id' => 'mypage#user'
-
-  resources :posts
+  get '/mypage/:category' => 'mypage#my'
 
   get '/spots/category/:category' => 'spots#category'
   get '/welcome/index'
   get '/map' => 'spots#all_map'
+  get '/map/:category' => 'spots#all_map'
 
   root 'welcome#main'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -7,7 +7,6 @@ class Spot < ApplicationRecord
 	belongs_to :user
 	belongs_to :place
 
-
 	has_many :posts, dependent: :destroy
 	has_many :likes, dependent: :destroy
 
@@ -18,7 +17,6 @@ class Spot < ApplicationRecord
 	has_many :read_users, through: :spot_reads, source: :user
 	has_many :rate_posts, through: :spot_rates, source: :post
 	
-
 	mount_uploader :picture, PictureUploader
 
 	geocoded_by :address
