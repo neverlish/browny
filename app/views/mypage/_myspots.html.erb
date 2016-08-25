@@ -1,0 +1,8 @@
+<% @spots.each do |spot| %>
+	<% if spot.liked_users.include?(@user) %>
+		<%= link_to "#{spot.name}", spot_path(spot) %>
+		<span class="label label-primary"><%= spot.place.city.name %></span>
+		<span class="label label-success"><%= spot.place.name %></span>
+		<span class="label label-info"><%= spot.category %></span>
+	<% end %>
+<% end %>
