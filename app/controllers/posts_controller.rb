@@ -13,24 +13,11 @@ class PostsController < ApplicationController
   def create
     	@post = @spot.posts.create(post_params)
     	@post.user = current_user
-     @post.save
-#      @img_url = @post.body.match(/src="([^\/.]*)"/)
-#      @post.imageurl = img_url
-#      @post.save
-# # # save img url
-#      @bodyimg = @post.body.split("</img alt="" src=")
-#      @bodyimg.each do |data|
-#        bol = data.include? "uploads"
-#        if bol =false
-#         data = nil
-#        end
-#      end
-# #      @bodyimg.delete_if{|data| data==nil}
-
+     @post.save ? (redirect_to @post) : (render 'new')
 end
 
 
-  def show   
+  def show 
   end
 
   def edit
