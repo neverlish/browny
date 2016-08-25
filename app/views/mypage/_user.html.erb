@@ -1,4 +1,18 @@
 <h4>Liked Spots : </h4>
-<% @user.liked_spots.each do |spot| %>
-	<%= link_to "#{spot.name}", spot_path(spot) %><br>
+<% @spots.each do |spot| %>
+	<% if spot.liked_users.include?(@user) %>
+		<%= link_to "#{spot.name}", spot_path(spot) %>
+		<span class="label label-primary"><%= spot.place.city.name %></span>
+		<span class="label label-success"><%= spot.place.name %></span>
+		<span class="label label-info"><%= spot.category %></span>
+	<% end %>
+<% end %>
+<hr>
+<h4>Liked Posts : </h4>
+<% @posts.each do |post| %>
+	<% if post.liked_users.include?(@user) %>
+		<%= link_to "#{post.spot.name}", post_path(post) %><br>
+		<%= post.body.html_safe %>
+	<% end %>
+	<hr>
 <% end %>

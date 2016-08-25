@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/user/:id' => 'mypage#user'
 
   resources :posts
+
   get '/spots/category/:category' => 'spots#category'
   get '/welcome/index'
   get '/map' => 'spots#all_map'
