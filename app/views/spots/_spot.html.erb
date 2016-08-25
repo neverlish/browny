@@ -1,69 +1,61 @@
-<!--<div class="text-right">
-	Place : <%= link_to spot.place.name, place_path(spot.place) %><br>
-</div>-->
-<%= link_to spot_path(spot) do %>
-	<h4><%= spot.name%></h4>
-<% end %>
-<!--<div class="text-right">
-	작성자 : <%= spot.user.name %> | 
-	Category : <%= spot.category %><br>
-</div>-->
-<span class="label label-primary"><%= spot.place.city.name %></span>
-<span class="label label-success"><%= spot.place.name %></span>
-<span class="label label-info"><%= spot.category %></span><br>
-
-<!--<div style='width: 100%;'>
-  <div id="map" style='width: 100%; height: 300px;'></div>
-</div>
-작성자 : <%= spot.user.name %> | 
-Category : <%= spot.category %><br>-->
-<% if current_user.is_spotlike?(spot) %>
-    <%= link_to image_tag("heart", size: "15x15"), spot_like_path(spot), method: "post" %>
-<% else %>
-    <%= link_to "좋아요", spot_like_path(spot), method: "post" %>
-<% end %>
-<%= spot.likes.size%>명이 좋아합니다.
-
-<div class="text-right">
-	<%= link_to '지도에서 보기', spot_map_path(spot), class: 'btn btn-default' %>
-	<!--<%= link_to 'Go to spots list', spots_path %> | 
-	<%= link_to 'Edit', edit_spot_path(spot) %> | 
-	<%= link_to 'Delete', spot_path(spot), method: :delete %>-->
-</div>
-
-<hr>
-
-<% spot.posts.all.order('created_at desc').each do |post| %>
-	<div style="border: 1px solid gray" >
-		<div>
-			<div class="mu-10 mb-10 ml-20">
-				<strong style="font-size: 15px">포스트   </strong><d style="font-size: 10px">Post</d> 
-			</div>
-			<hr style="padding: 0; margin:0">
-			<strong><%=post.title%></strong><br>
-			<div class="text-right">
-				<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
-				<strong><%= post.user.name %></strong>
-				<%=post.user.created_at.strftime("20%y/%m/%d")%>
-			</div>
-			<%= post.body.html_safe %><br>
-			<hr>
-			<%= post.likes.size%>명이 좋아합니다.<br>
-			<% if current_user.is_postlike?(post) %>
-			    <%= link_to "좋아요 취소", spot_post_like_path(@spot, post), method: "post" %>
-			<% else %>
-			    <%= link_to "좋아요", spot_post_like_path(@spot, post), method: "post" %>
-			<% end %>
-		</div>
-		<% if post.user == current_user %>
-			<div class="text-right">
-				<%= link_to 'Read detail', spot_post_path(spot, post) %> | 
-				<%= link_to 'Edit', edit_spot_post_path(spot, post) %> | 
-				<%= link_to 'Delete', spot_post_path(spot, post), method: :delete %>
-			</div>
+<div style="min-height: 200px;">
+	<div class="col-md-8">
+		<%= link_to "#{spot.name}", spot_path(spot), style: "font-size: 20px;" %>
+		<%= link_to image_tag("map", size: "20x20", style: "margin-top: -10px;"), spot_map_path(spot) %>
+		<br>
+		<%= spot.address %>
+	</div>
+	<div class="col-md-4 text-right">
+		<span class="label label-primary"><%= spot.place.city.name %></span>
+		<span class="label label-success"><%= spot.place.name %></span>
+		<span class="label label-info"><%= spot.category %></span>
+		<hr style="margin: 15px 0 10px 0;">
+		<% if current_user.is_spotlike?(spot) %>
+		    <%= link_to image_tag("heart", size: "15x15"), spot_like_path(spot), method: "post" %>
+		<% else %>
+		    <%= link_to "좋아요", spot_like_path(spot), method: "post" %>
+		<% end %>
+		<%= spot.likes.where(post_id:nil).size%>명이 좋아합니다.<br>
+		
+		<% if current_user == spot.user %>
+			<%= link_to 'Go to spots list', spots_path %> | 
+			<%= link_to 'Edit', edit_spot_path(spot) %> | 
+			<%= link_to 'Delete', spot_path(spot), method: :delete %>
 		<% end %>
 	</div>
-	<div style="margin-bottom: 10px;"></div>
-	<hr>
-<% end %>
+</div>
+<hr>
+
+<div>
+	<div class="mu-10 mb-10 ml-10" style="margin-bottom: 20px;">
+		<strong style="font-size: 15px">포스트   </strong>
+		<span style="font-size: 10px">Post</span> 
+	</div>
+	<% spot.posts.all.order('created_at desc').each do |post| %>
+		<%= image_tag(post.user.image, size: '20x20', style:'border-radius: 3px; vertical-align:medium; margin-top: -4px;') if current_user.image %>
+		<strong><%= post.user.name %></strong>
+		<span style="font-size: 12px;"><%= post.user.created_at.strftime("20%y/%m/%d") %></span>
+
+		<div class="text-right">
+			<%= link_to 'Read detail', spot_post_path(spot, post) %> 
+			<% if post.user == current_user %>
+				 | <%= link_to 'Edit', edit_spot_post_path(spot, post) %> | 
+				<%= link_to 'Delete', spot_post_path(spot, post), method: :delete %>
+			<% end %>
+		</div>
+		
+		<br><br>
+		<%= post.body.html_safe %><br>
+
+		<strong><%=post.title%></strong><br>
+		<% if current_user.is_postlike?(post) %>
+		    <%= link_to image_tag("heart_filled", size: "15x15"), spot_post_like_path(@spot, post), method: "post" %>
+		<% else %>
+		    <%= link_to image_tag("heart", size: "15x15"), spot_post_like_path(@spot, post), method: "post" %>
+		<% end %>
+		<%= post.likes.size%>명이 좋아합니다.
+		<hr>
+	<% end %>
+</div>
+
 
