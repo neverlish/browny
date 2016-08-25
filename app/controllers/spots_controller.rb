@@ -2,7 +2,7 @@ class SpotsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_spot, only: [:show, :edit, :update, :destroy, :map]
   before_action :place_select, only: [:index, :category, :show, :new, :create]
-  before_action :place_spots, only: [:show, :all_map]
+  before_action :place_spots, only: [:show]
 
   def category
     @post = Post.new
@@ -60,6 +60,11 @@ class SpotsController < ApplicationController
   end
 
   def all_map
+    if params[:category]
+      @spots = Spot.where(category: params[:category])
+    else 
+      @spots = Spot.all
+    end
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
     marker.lat spot.latitude
     marker.lng spot.longitude

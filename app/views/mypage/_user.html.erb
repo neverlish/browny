@@ -14,7 +14,7 @@
 <% @posts.each do |post| %>
 	<button class="btn btn-default" style="min-width:100%;">
 		<% if post.liked_users.include?(@user) %>
-			<%= link_to "#{post.spot.name}", post_path(post) %><br>
+			<%= link_to "#{post.spot.name}", spot_post_path(post.spot, post) %><br>
 			<%= post.body.html_safe %>
 		<% end %>
 	</button>
