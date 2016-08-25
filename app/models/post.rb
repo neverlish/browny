@@ -4,7 +4,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :spot
   has_one :spot_rate
-  has_many :likes
   mount_uploader :picture, CkeditorPictureUploader
   serialize :imageurls, Array
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
 end

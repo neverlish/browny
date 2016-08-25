@@ -1,0 +1,19 @@
+<%= link_to spot_path(@spot) do %>
+	<h4><%= @spot.name%></h4>
+<% end %>
+<span class="label label-primary"><%= @spot.place.city.name %></span>
+<span class="label label-success"><%= @spot.place.name %></span>
+<span class="label label-info"><%= @spot.category %></span><br>
+<% if current_user.is_spotlike?(@spot) %>
+    <%= link_to image_tag("heart", size: "15x15"), spot_like_path(@spot), method: "post" %>
+<% else %>
+    <%= link_to "좋아요", spot_like_path(@spot), method: "post" %>
+<% end %>
+<%= @spot.likes.size%>명이 좋아합니다.
+
+
+<div class="w-100">
+  <div id="map" class="w-100" style='height: 300px;'></div>
+</div>
+
+<%= render "map" %>

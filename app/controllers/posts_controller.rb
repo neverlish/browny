@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 #         data = nil
 #        end
 #      end
-#      @bodyimg.delete_if{|data| data==nil}
+# #      @bodyimg.delete_if{|data| data==nil}
 
 end
 

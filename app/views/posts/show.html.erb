@@ -2,7 +2,7 @@
 <h1>제목 : <%=@post.title%></h1>
 <%= @post.spot.category %>
 <div class="text-right">
-	<%= link_to spot_path(@spot) do %>
+	<%= link_to spot_path(@post.spot) do %>
 		<h4>SPOT : <%= @post.spot.name %></h4>
 	<% end %>
 </div>
@@ -14,7 +14,7 @@
 <%= @post.body.html_safe %>
 <% if @post.user == current_user %>
 	<div class="text-right">
-		<%= link_to 'Edit', edit_spot_post_path(@spot, @post) %> | 
-		<%= link_to 'Delete', spot_post_path(@spot, @post), method: :delete %>
+		<%= link_to 'Edit', edit_spot_post_path(@post.spot, @post) %> | 
+		<%= link_to 'Delete', spot_post_path(@post.spot, @post), method: :delete %>
 	</div>
 <% end %>

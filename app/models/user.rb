@@ -6,16 +6,12 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
   has_many :spots, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :sayinygs, dependent: :destroy
   has_many :spot_reads, dependent: :destroy
-  # has_many :asks, dependent: :destroy
-  # has_many :answers, dependent: :destroy
-
+  has_many :liked_spots, through: :likes, source: :spot
   has_many :read_spots, through: :spot_reads, source: :spot
-  # has_many :asked_spots, through: :asks, source: :spot
-  # has_many :answered_spots, through: :answers, source: :spot
-
-  has_many :likes
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email

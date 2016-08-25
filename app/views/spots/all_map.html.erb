@@ -1,14 +1,5 @@
-<div style='width: 100%;'>
-  <div id="map" style='width: 100%; height: 300px;'></div>
+<div class="w-100">
+  <div id="map" class="w-100" style='height: 300px;'></div>
 </div>
 
-<script type="text/javascript">
-	handler = Gmaps.build('Google');
-	
-	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-		markers = handler.addMarkers(<%=raw @hash.to_json %>);	  	
-	  handler.bounds.extendWith(markers);
-	  handler.fitMapToBounds();
-	  handler.getMap().setZoom(10);
-	});
-</script>
+<%= render "map" %>
