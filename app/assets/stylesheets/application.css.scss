@@ -32,6 +32,10 @@
 	width: 100%;
 }
 
+.font-12 {
+	font-size: 12px;
+}
+
 
 /* OLD NAVBAR */
 .navbar-head {
@@ -99,6 +103,7 @@
 	 padding-top: 7px; 
 	 position:fixed; 
 	 background-color: white; 
+	 font-size: 12px;
 	 z-index: 1;
 }
 
@@ -115,7 +120,7 @@
 	height: 28px;
 	text-decoration: none;
 	color: black;
-	padding-top: 2px;
+	padding-top: 5px;
 	margin: 0 -2px;
 }
 
@@ -133,23 +138,23 @@
 
 
 .navbar-link-box-all {
-	background-color: #9babff;
+	background-color: #c6b297;
 }
 
 .navbar-link-box-do {
-	background-color: #54ff9f;
+	background-color: #f5e4cd;
 }
 
 .navbar-link-box-see {
-	background-color: #ff6768;
+	background-color: #f8ecdc;
 }
 
 .navbar-link-box-eat {
-	background-color: #ffa700;
+	background-color: #c0dfff;
 }
 
 .navbar-link-box-sleep {
-	background-color: #603366;
+	background-color: #8ec5de;
 }
 
 /* MAIN PAGE */

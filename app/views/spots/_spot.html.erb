@@ -1,7 +1,10 @@
+
 <div style="min-height: 200px;">
 	<div class="col-md-8">
 		<%= link_to "#{spot.name}", spot_path(spot), style: "font-size: 20px;" %>
-		<%= link_to image_tag("map", size: "20x20", style: "margin-top: -10px;"), spot_map_path(spot) %>
+		<%= link_to spot_map_path(spot), class: "font-12", style:'text-decoration:none; margin-left: 10px; color: black;' do %>
+			<%= image_tag("map", size: "20x20", style: "margin-top: -10px;") %> 지도보기
+		<% end %>
 		<br>
 		<%= spot.address %>
 	</div>
@@ -10,19 +13,22 @@
 		<span class="label label-success"><%= spot.place.name %></span>
 		<span class="label label-info"><%= spot.category %></span>
 		<hr style="margin: 15px 0 10px 0;">
-		<% if current_user.is_spotlike?(spot) %>
+		<div class="font-12">
+			<% if current_user.is_spotlike?(spot) %>
+		    <%= link_to image_tag("heart_filled", size: "15x15"), spot_like_path(spot), method: "post" %>
+			<% else %>
 		    <%= link_to image_tag("heart", size: "15x15"), spot_like_path(spot), method: "post" %>
-		<% else %>
-		    <%= link_to "좋아요", spot_like_path(spot), method: "post" %>
-		<% end %>
-		<%= spot.likes.where(post_id:nil).size%>명이 좋아합니다.<br>
-		
-		<% if current_user == spot.user %>
-			<%= link_to 'Go to spots list', spots_path %> | 
-			<%= link_to 'Edit', edit_spot_path(spot) %> | 
-			<%= link_to 'Delete', spot_path(spot), method: :delete %>
-		<% end %>
+			<% end %>
+			<%= spot.likes.where(post_id:nil).size%>명이 좋아합니다.<br><br>
+			<%= link_to 'Spots list', spots_path %> | 
+			<% if current_user == spot.user %>
+				
+				<%= link_to 'Edit', edit_spot_path(spot) %> | 
+				<%= link_to 'Delete', spot_path(spot), method: :delete %>
+			<% end %>
+		</div>
 	</div>
+
 </div>
 <hr>
 
@@ -36,7 +42,7 @@
 		<strong><%= post.user.name %></strong>
 		<span style="font-size: 12px;"><%= post.user.created_at.strftime("20%y/%m/%d") %></span>
 
-		<div class="text-right">
+		<div class="text-right font-12">
 			<%= link_to 'Read detail', spot_post_path(spot, post) %> 
 			<% if post.user == current_user %>
 				 | <%= link_to 'Edit', edit_spot_post_path(spot, post) %> | 
@@ -46,7 +52,7 @@
 		
 		<br><br>
 		<%= post.body.html_safe %><br>
-
+		<div class="font-12">
 		<strong><%=post.title%></strong><br>
 		<% if current_user.is_postlike?(post) %>
 		    <%= link_to image_tag("heart_filled", size: "15x15"), spot_post_like_path(@spot, post), method: "post" %>
@@ -54,6 +60,7 @@
 		    <%= link_to image_tag("heart", size: "15x15"), spot_post_like_path(@spot, post), method: "post" %>
 		<% end %>
 		<%= post.likes.size%>명이 좋아합니다.
+		</div>
 		<hr>
 	<% end %>
 </div>

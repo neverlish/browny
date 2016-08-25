@@ -1,3 +1,6 @@
+<% if not @spot %>
+	asd
+<% end %>
 <%= simple_form_for([@spot, @post]) do |f| %>
   <div class="form-group">
     <%= f.cktext_area :body, ckeditor: {:toolbar =>'mini'} %>
