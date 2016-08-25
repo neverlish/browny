@@ -4,6 +4,7 @@
 		<div style="border: 1px solid gray; width: 100%; height: 100%;">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 50%; border: 1px solid red;">
 				<%=image_tag(post.picture) %>
+				<%= post.picture%>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 50%; border: 1px solid blue;">
 				<%= post.body %>
@@ -12,7 +13,3 @@
 	</div>
 <% end %>
 </div>
-
-<script type="text/javascript">
-	var img = $(this).find("<p>").find("<img").find("style").find("</p>");
-</script>

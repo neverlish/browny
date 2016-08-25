@@ -11,10 +11,24 @@ class PostsController < ApplicationController
   end
 
   def create
-  	@post = @spot.posts.create(post_params)
-  	@post.user = current_user
-    @post.save ? (redirect_to @spot) : (render 'new')
-  end
+    	@post = @spot.posts.create(post_params)
+    	@post.user = current_user
+     @post.save
+#      @img_url = @post.body.match(/src="([^\/.]*)"/)
+#      @post.imageurl = img_url
+#      @post.save
+# # # save img url
+#      @bodyimg = @post.body.split("</img alt="" src=")
+#      @bodyimg.each do |data|
+#        bol = data.include? "uploads"
+#        if bol =false
+#         data = nil
+#        end
+#      end
+# #      @bodyimg.delete_if{|data| data==nil}
+
+end
+
 
   def show   
   end
@@ -33,7 +47,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-  	params.require(:post).permit(:body, :user, :picture, :title, :spot_id)
+  	params.require(:post).permit(:body, :user,:picture, :title)
   end
 
   def set_spot
