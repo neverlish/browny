@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :sayinygs, dependent: :destroy
   has_many :spot_reads, dependent: :destroy
+  has_many :liked_spots, through: :likes, source: :spot
   # has_many :asks, dependent: :destroy
   # has_many :answers, dependent: :destroy
 

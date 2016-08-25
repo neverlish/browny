@@ -1,0 +1,4 @@
+<h4>Liked Spots : </h4>
+<% @user.liked_spots.each do |spot| %>
+	<%= link_to "#{spot.name}", spot_path(spot) %><br>
+<% end %>

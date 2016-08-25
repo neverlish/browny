@@ -1,31 +1,21 @@
-<!--<div class="text-right">
-	Place : <%= link_to spot.place.name, place_path(spot.place) %><br>
-</div>-->
+
 <%= link_to spot_path(spot) do %>
 	<h4><%= spot.name%></h4>
 <% end %>
-<!--<div class="text-right">
-	작성자 : <%= spot.user.name %> | 
-	Category : <%= spot.category %><br>
-</div>-->
+
 <span class="label label-primary"><%= spot.place.city.name %></span>
 <span class="label label-success"><%= spot.place.name %></span>
 <span class="label label-info"><%= spot.category %></span><br>
 
-<!--<div style='width: 100%;'>
-  <div id="map" style='width: 100%; height: 300px;'></div>
-</div>
-작성자 : <%= spot.user.name %> | 
-Category : <%= spot.category %><br>-->
 <% if current_user.is_spotlike?(spot) %>
-    <%= link_to image_tag("heart", size: "15x15"), spot_like_path(spot), method: "post" %>
+    <%= link_to image_tag("heart_filled", size: "15x15"), spot_like_path(spot), method: "post" %>
 <% else %>
-    <%= link_to "좋아요", spot_like_path(spot), method: "post" %>
+    <%= link_to image_tag("heart", size: "15x15"), spot_like_path(spot), method: "post" %>
 <% end %>
 <%= spot.likes.size%>명이 좋아합니다.
 
 <div class="text-right">
-	<%= link_to '지도에서 보기', spot_map_path(spot), class: 'btn btn-default' %>
+	<%= link_to image_tag("map", size: "20x20"), spot_map_path(spot), class: 'btn btn-default' %>
 	<!--<%= link_to 'Go to spots list', spots_path %> | 
 	<%= link_to 'Edit', edit_spot_path(spot) %> | 
 	<%= link_to 'Delete', spot_path(spot), method: :delete %>-->

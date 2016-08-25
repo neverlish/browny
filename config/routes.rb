@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 	resources :cities do
@@ -15,6 +16,9 @@ Rails.application.routes.draw do
     post "like", to: "likes#like_spot_toggle"
     get 'map' => 'spots#map'
   end
+
+  get '/mypage' => 'mypage#my'
+  get '/user/:id' => 'mypage#user'
 
   resources :posts
   get '/spots/category/:category' => 'spots#category'
