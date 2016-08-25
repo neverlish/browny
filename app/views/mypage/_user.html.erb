@@ -1,22 +1,22 @@
 <h4>My Spots</h4>
 <% @spots.each do |spot| %>
-	<button class="btn btn-default" style="min-width:100%;">
 	<% if spot.liked_users.include?(@user) %>
-		<%= link_to "#{spot.name}", spot_path(spot) %>
-		<span class="label label-primary"><%= spot.place.city.name %></span>
-		<span class="label label-success"><%= spot.place.name %></span>
-		<span class="label label-info"><%= spot.category %></span>
+		<button class="btn btn-default" style="min-width:100%;">
+			<%= link_to "#{spot.name}", spot_path(spot) %>
+			<span class="label label-primary"><%= spot.place.city.name %></span>
+			<span class="label label-success"><%= spot.place.name %></span>
+			<span class="label label-info"><%= spot.category %></span>
+		</button>
 	<% end %>
-	</button>
 <% end %>
 <hr>
 <h4>My Posts</h4>
 <% @posts.each do |post| %>
-	<button class="btn btn-default" style="min-width:100%;">
-		<% if post.liked_users.include?(@user) %>
+	<% if post.liked_users.include?(@user) %>
+		<button class="btn btn-default" style="min-width:100%;">
 			<%= link_to "#{post.spot.name}", spot_post_path(post.spot, post) %><br>
 			<%= post.body.html_safe %>
-		<% end %>
-	</button>
+		</button>
+	<% end %>
 <% end %>
 <hr>
