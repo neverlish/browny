@@ -20,9 +20,12 @@
   <div style="display: block; clear:both; color:white;">
     <p style="font-size:70px;"> Browny </p><p style="font-size:35px;">Serves A Good</p><p style="font-size:65px;">Brownie</p>
   </div><br>-->
-  <%= image_tag "mainpage", size: "250x300" %><br><br>
-	<%= link_to user_facebook_omniauth_authorize_path do %>
-		<%= image_tag "login_fb", size: '250x50', class: "login-fb" %>
-	<% end %>
+  <div class="text-center" style="padding-top: 35px;">
+    <%= image_tag "mainpage", size: "300x300" %><br><br>
+    <br>
+  	<%= link_to user_facebook_omniauth_authorize_path do %>
+  		<%= image_tag "login_fb", size: '250x50', class: "login-fb" %>
+  	<% end %>
+  </div>
 	<!--</div>
 </div>-->
