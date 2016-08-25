@@ -5,6 +5,6 @@ class Post < ApplicationRecord
   belongs_to :spot
   has_one :spot_rate
   has_many :likes
-
-  mount_uploader :picture, PictureUploader
+  mount_uploader :picture, CkeditorPictureUploader
+  serialize :imageurls, Array
 end
