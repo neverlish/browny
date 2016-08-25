@@ -1,7 +1,14 @@
-<% if not @spot %>
+<% @include_select_location_js = true %>
 
+<% if not @spot %>
+	<%= select_tag(:select_city, options_for_select(City.all.pluck(:name, :id))) %>
+	<%= select_tag(:select_place, options_for_select(Place.all.pluck(:name, :id))) %>
+	<%= select_tag(:select_spot, options_for_select(Spot.all.pluck(:name, :id))) %>
 <% end %>
+<br>
+
 <%= simple_form_for([@spot, @post]) do |f| %>
+
   <div class="form-group">
     <%= f.cktext_area :body, ckeditor: {:toolbar =>'mini'} %>
   </div>

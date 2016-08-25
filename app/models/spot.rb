@@ -23,4 +23,8 @@ class Spot < ApplicationRecord
 
 	geocoded_by :address
 	after_validation :geocode
+
+	def json_data
+		{ type: "Spot", name: name, children: nil, id: id } 
+	end
 end

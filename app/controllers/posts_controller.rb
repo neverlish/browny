@@ -8,12 +8,18 @@ class PostsController < ApplicationController
   
   def new
     @post = @spot ? @spot.posts.new : Post.new
+    gon.location_data = City.all.map{|city| city.json_data}
   end
 
   def create
   	@post = @spot.posts.create(post_params)
   	@post.user = current_user
-    @post.save ? (redirect_to @spot) : (render 'new')
+    if @post.save
+      redirect_to @spot
+    else
+      gon.location_data = City.all.map{|city| city.json_data}
+      render 'new'
+    end
   end
 
   def show   
