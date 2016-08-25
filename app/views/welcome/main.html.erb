@@ -1,18 +1,41 @@
-<div class="row">
 <% @posts.each do |post| %>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border: 1px solid gray; height: 450px;">
-		<div style="border: 1px solid gray; width: 100%; height: 100%;">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 50%; border: 1px solid red;">
-				<%=image_tag(post.picture) %>
+		<div style="width: 100%; height: 100%;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 50%;">
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+					<p style="font-size: 30px; padding: 15px"><%= post.spot.name %></p>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right" >
+					<div style="margin: 20px;">
+						<span class="label label-primary"><%= post.spot.place.city.name %></span>
+						<span class="label label-success"><%= post.spot.place.name %></span>
+						<span class="label label-info"><%= post.spot.category %></span>
+					</div>
+						<hr style="margin: 15px 0 10px 0;">
+						<div class="font-12">
+							<% if current_user.is_postlike?(post) %>
+								<%= link_to image_tag("heart_filled", size: "15x15"), spot_post_like_path(post.spot, post), method: "post" %>
+							<% else %>
+								<%= link_to image_tag("heart", size: "15x15"), spot_post_like_path(post.spot, post), method: "post" %>
+							<% end %>
+							<%= post.likes.all.size%>명이 좋아합니다.<br><br>
+						</div>
+				</div>
+
+				<div class="text-right">
+					<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
+					<%= post.user.name %><br>
+					<%= link_to 'Spots list', spots_path %> | 
+					<% if current_user == post.spot.user %>
+					<%= link_to 'Edit', edit_spot_path(post.spot) %> | 
+					<%= link_to 'Delete', spot_path(post.spot), method: :delete %>
+					<% end %>
+				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 50%; border: 1px solid blue;">
-				<%= post.body %>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 50%;padding: 0px;">
+				<img src="<%= post.imageurls[0] %>" style="height: 100%; width: 100%">
 			</div>
 		</div>
 	</div>
+	<hr>
 <% end %>
-</div>
-
-<script type="text/javascript">
-	var img = $(this).find("<p>").find("<img").find("style").find("</p>");
-</script>

@@ -1,7 +1,21 @@
 <h4>Posts</h4>
 <% @posts.each do |post| %>
-	<div class="well">
-		<strong>Spot: <%= link_to "#{post.spot.name}", spot_path(post.spot) %></strong><br>
-		Post 내용 : <%= link_to "#{post.body}", spot_post_path(post.spot, post) %>
+	<hr>
+	<%= link_to spot_path(post.spot) do %>
+		<h1>Spot : <%=post.spot.name%></h1>
+	<% end %>
+	<%= post.spot.category %>
+	<div class="text-right">
+		<%= image_tag(current_user.image, size: '20x20', style:'border-radius:3px;vertical-align:top;') if current_user.image %>
+		<%= post.user.name %>
 	</div>
+	<hr>
+	<%= post.body.html_safe %>
+	<% if post.user == current_user %>
+		<div class="text-right">
+			<%= link_to 'Edit', edit_spot_post_path(post.spot, post) %> | 
+			<%= link_to 'Delete', spot_post_path(post.spot, post), method: :delete %>
+		</div>
+	<%end%>
+	<hr>
 <% end %>

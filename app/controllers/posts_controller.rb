@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def show   
+  def show 
   end
 
   def edit
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-  	params.require(:post).permit(:body, :user, :picture, :title, :spot_id)
+  	params.require(:post).permit(:body, :user,:picture, :title)
   end
 
   def set_spot
